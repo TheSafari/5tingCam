@@ -26,7 +26,7 @@ https://docs.google.com/forms/d/1DXbuwIn3W-cpvLzxwnhOKlJi9p7mrEkeaARVkqYY3AE/vie
 ### Wireframe Walkthrough
 
 
-You can also try on browsers: https://projects.invisionapp.com/liveshare/79UK2CVSDRE#/screens/223694200
+You can also try on browsers: https://invis.io/p/79UK2CVSDRE
 
 Libraries we are using:
 - Microsoft Cognitive Services
