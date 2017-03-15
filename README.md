@@ -5,10 +5,19 @@ An iOS Swift application. It brought joy and increased motivation for everyone t
 
 #### Required
 - [ ] Face emotion recognition
-- [ ] 
+- [ ] Insert animal face into people face
+- [ ] Insert quote
+- [ ] Read quote and play animal sound
+- [ ] Move, zoom in/zoom out, rotate face of animal
+- [ ] Change to another randomize animal face
+- [ ] Move quote position
+- [ ] Change quote color
+- [ ] Save picture to photo album
     
 #### Optional
-- [ ] Share to social network: Facebook, Instagram
+- [ ] Share to social networks: Facebook, Instagram
+- [ ] Create gif file with emoticon animation
+- [ ] Download and shop more animal face
 
 
 Our small survey:
@@ -20,3 +29,5 @@ https://docs.google.com/forms/d/1DXbuwIn3W-cpvLzxwnhOKlJi9p7mrEkeaARVkqYY3AE/vie
 You can also try on browsers: 
 
 Libraries we are using:
+- Microsoft Cognitive Services
+- AFNetworking
