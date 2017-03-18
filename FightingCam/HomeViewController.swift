@@ -40,6 +40,16 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
+            //temp Test request API
+            let imageData = UIImagePNGRepresentation(selectedImage!)
+            
+            
+            DataManager.shareInstance.fetchFaceInfoFromUrl(data: imageData!, completion: { (items) -> (Void) in
+                    // Handle after fetch to api success 
+                print("Fetch Success Item = : \(items) ")
+            })
+            
+            
             performSegue(withIdentifier: "goToEditScreen", sender: self)
         } else{
             print("Something went wrong")

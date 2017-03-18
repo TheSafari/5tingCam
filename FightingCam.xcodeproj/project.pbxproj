@@ -13,6 +13,8 @@
 		20A9A5491E7964E200A62A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A9A5471E7964E200A62A44 /* Main.storyboard */; };
 		20A9A54B1E7964E200A62A44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20A9A54A1E7964E200A62A44 /* Assets.xcassets */; };
 		20A9A54E1E7964E200A62A44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A9A54C1E7964E200A62A44 /* LaunchScreen.storyboard */; };
+		20DB7DE31E7DDE4E00ADACC4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB7DE21E7DDE4E00ADACC4 /* DataManager.swift */; };
+		20DB7DE61E7DDE5F00ADACC4 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		20A9A54A1E7964E200A62A44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20A9A54D1E7964E200A62A44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20A9A54F1E7964E200A62A44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20DB7DE21E7DDE4E00ADACC4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 		20A9A5421E7964E200A62A44 /* FightingCam */ = {
 			isa = PBXGroup;
 			children = (
+				20DB7DE41E7DDE5800ADACC4 /* Model */,
+				20DB7DE11E7DDE1B00ADACC4 /* Service */,
 				20122AA01E7CDC0000734DAF /* ViewController */,
 				20A9A5431E7964E200A62A44 /* AppDelegate.swift */,
 				20A9A5471E7964E200A62A44 /* Main.storyboard */,
@@ -73,6 +79,22 @@
 				20A9A54F1E7964E200A62A44 /* Info.plist */,
 			);
 			path = FightingCam;
+			sourceTree = "<group>";
+		};
+		20DB7DE11E7DDE1B00ADACC4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				20DB7DE21E7DDE4E00ADACC4 /* DataManager.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		20DB7DE41E7DDE5800ADACC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,7 +129,7 @@
 				TargetAttributes = {
 					20A9A53F1E7964E200A62A44 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 83RFM76L96;
+						DevelopmentTeam = 87E55Q9ME9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -149,6 +171,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A9A5441E7964E200A62A44 /* AppDelegate.swift in Sources */,
+				20DB7DE61E7DDE5F00ADACC4 /* ImageInfo.swift in Sources */,
+				20DB7DE31E7DDE4E00ADACC4 /* DataManager.swift in Sources */,
 				20122A9F1E7CD4FD00734DAF /* EditViewController.swift in Sources */,
 				20122AA21E7CE2BA00734DAF /* HomeViewController.swift in Sources */,
 			);
@@ -273,8 +297,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 83RFM76L96;
+				DEVELOPMENT_TEAM = 87E55Q9ME9;
 				INFOPLIST_FILE = FightingCam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesafari.FightingCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,8 +311,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 83RFM76L96;
+				DEVELOPMENT_TEAM = 87E55Q9ME9;
 				INFOPLIST_FILE = FightingCam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesafari.FightingCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
