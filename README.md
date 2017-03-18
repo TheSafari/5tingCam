@@ -1,5 +1,6 @@
 ## 5tingCam
-An iOS Swift application. 5ting Cam (5ting means fighting) with a mission to create fun, motivation for people and connect people together  through  funny  pictures.  Besides,  they  also received  a quote  that  make  them more motivation, inspiration for working or studying and adorable sound of animals also be attached. The app helped people reduced fatigue, stressed of users after hours of work or study.
+An iOS Swift application. 5ting Cam (5ting means fighting) with a mission to create fun, motivation for people and connect people together  through  funny  pictures.  Besides,  they  also received  a quote  that  make  them more motivation, inspiration for working or studying and adorable sound of animals also be attached. Our target users are anyone who want to find an app to relax, to get energized and motivated when they feel lazy. The app can help them to reduce fatigue and stress after hours of work or study.
+
 
 ### Features
 
