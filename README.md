@@ -14,9 +14,10 @@ An iOS Swift application. 5ting Cam (5ting means fighting) with a mission to cre
 - [ ] Move quote position
 - [ ] Change quote color
 - [ ] Save picture to photo album
+- [ ] Share to social networks: Facebook, Instagram, Twitter
     
 #### Optional
-- [ ] Share to social networks: Facebook, Instagram
+- [ ] Custom image filter
 - [ ] Create gif file with emoticon animation
 - [ ] Download and shop more animal face
 
