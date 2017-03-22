@@ -18,6 +18,7 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
 
         imageView.image = image
+        
     }
 
     override func didReceiveMemoryWarning() {

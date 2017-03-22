@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController, UINavigationControllerDelegate,  UIImagePickerControllerDelegate {
+    @IBOutlet weak var imageView: UIImageView!
     
     var selectedImage: UIImage?
     
@@ -40,34 +41,37 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
+            
+            imageView.image = image
+            
             //temp Test request API
-            let imageData = UIImagePNGRepresentation(selectedImage!)
+            let imageData = UIImagePNGRepresentation(image)
             
             
             DataManager.shareInstance.fetchFaceInfoFromUrl(data: imageData!, completion: { (items) -> (Void) in
-                    // Handle after fetch to api success 
+                // Handle after fetch to api success
                 print("Fetch Success Item = : \(items) ")
             })
             
+            dismiss(animated: true, completion: nil)
             
-            performSegue(withIdentifier: "goToEditScreen", sender: self)
+            let editVC = self.storyboard!.instantiateViewController(withIdentifier: "editViewController") as! EditViewController
+            self.present(editVC, animated: true, completion: nil)
+            
         } else{
             print("Something went wrong")
         }
-        
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToEditScreen" {
-            if let editVc = segue.destination as? EditViewController {
-                editVc.image = selectedImage!
-            }
-        }
+        let editVC = segue.destination as! EditViewController
+        editVC.image = selectedImage!
+        
     }
 }

@@ -63,6 +63,10 @@
                                     <constraint firstAttribute="width" constant="10" id="TCH-ym-7cA"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="mainStoryBoard" translatesAutoresizingMaskIntoConstraints="NO" id="W60-lF-A8k">
+                                <rect key="frame" x="24" y="471" width="210" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -94,6 +98,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="W60-lF-A8k" id="ubo-hx-0N8"/>
                         <segue destination="lA0-YX-ABr" kind="show" identifier="goToEditScreen" id="mIB-if-oa2"/>
                     </connections>
                 </viewController>
@@ -104,7 +109,7 @@
         <!--Edit View Controller-->
         <scene sceneID="Pga-lS-KpV">
             <objects>
-                <viewController id="WUn-9x-1jL" customClass="EditViewController" customModule="FightingCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editViewController" id="WUn-9x-1jL" customClass="EditViewController" customModule="FightingCam" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="44x-yt-kXK"/>
                         <viewControllerLayoutGuide type="bottom" id="2bC-fP-qq6"/>
