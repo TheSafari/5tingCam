@@ -42,6 +42,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhT-Do-bK0" userLabel="Settings">
                                 <rect key="frame" x="185" y="299" width="72" height="110"/>
                                 <state key="normal" image="Settings"/>
+                                <connections>
+                                    <action selector="onClickSetting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qcz-in-ITb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5ting Cam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xn3-gg-Ij2">
                                 <rect key="frame" x="86" y="70" width="148" height="39"/>
@@ -63,8 +66,8 @@
                                     <constraint firstAttribute="width" constant="10" id="TCH-ym-7cA"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="mainStoryBoard" translatesAutoresizingMaskIntoConstraints="NO" id="W60-lF-A8k">
-                                <rect key="frame" x="24" y="471" width="210" height="77"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWH-EC-y7m">
+                                <rect key="frame" x="40" y="420" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -98,8 +101,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="W60-lF-A8k" id="ubo-hx-0N8"/>
+                        <outlet property="ivBg" destination="XWH-EC-y7m" id="Vyt-bC-NoV"/>
                         <segue destination="lA0-YX-ABr" kind="show" identifier="goToEditScreen" id="mIB-if-oa2"/>
+                        <segue destination="OzH-lo-ZAy" kind="show" identifier="goToEdit" id="tSH-tf-zr0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -109,7 +113,7 @@
         <!--Edit View Controller-->
         <scene sceneID="Pga-lS-KpV">
             <objects>
-                <viewController storyboardIdentifier="editViewController" id="WUn-9x-1jL" customClass="EditViewController" customModule="FightingCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WUn-9x-1jL" customClass="EditViewController" customModule="FightingCam" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="44x-yt-kXK"/>
                         <viewControllerLayoutGuide type="bottom" id="2bC-fP-qq6"/>
@@ -151,6 +155,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxV-IJ-BjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1151.25" y="135.21126760563379"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kgc-Uw-CYL">
+            <objects>
+                <viewController id="OzH-lo-ZAy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1nL-sS-yNX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ee3-VW-dUJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2cw-Nc-VID">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qoQ-hi-oV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="853"/>
         </scene>
     </scenes>
     <resources>

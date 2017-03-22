@@ -9,9 +9,11 @@
 import UIKit
 
 class HomeViewController: UIViewController, UINavigationControllerDelegate,  UIImagePickerControllerDelegate {
-    @IBOutlet weak var imageView: UIImageView!
     
     var selectedImage: UIImage?
+    var pathOfImage: UIBezierPath?
+    
+    @IBOutlet weak var ivBg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,39 +41,46 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
-            
-            imageView.image = image
-            
             //temp Test request API
-            let imageData = UIImagePNGRepresentation(image)
+            //let imageData = UIImagePNGRepresentation(selectedImage!)
             
             
-            DataManager.shareInstance.fetchFaceInfoFromUrl(data: imageData!, completion: { (items) -> (Void) in
-                // Handle after fetch to api success
-                print("Fetch Success Item = : \(items) ")
-            })
+//            DataManager.shareInstance.fetchFaceInfoFromUrl(data: imageData!, completion: { (items) -> (Void) in
+//                    // Handle after fetch to api success 
+//                print("Fetch Success Item = : \(items) ")
+//            })
             
-            dismiss(animated: true, completion: nil)
-            
-            let editVC = self.storyboard!.instantiateViewController(withIdentifier: "editViewController") as! EditViewController
-            self.present(editVC, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "goToEditScreen", sender: self)
             
         } else{
             print("Something went wrong")
         }
+    
+    
+        picker.dismiss(animated: true) { 
+            self.performSegue(withIdentifier: "goToEdit", sender: self)
+        }
+        
+        
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let editVC = segue.destination as! EditViewController
-        editVC.image = selectedImage!
-        
+        if let editVc = segue.destination as? EditViewController {
+                editVc.image = selectedImage
+        }
+    
     }
+    
+    @IBAction func onClickSetting(_ sender: UIButton) {
+       performSegue(withIdentifier: "goToEditScreen", sender: self)
+    }
+    
 }
