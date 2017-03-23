@@ -5,7 +5,7 @@ An iOS Swift application. 5ting Cam (5ting means fighting) with a mission to cre
 ### Features
 
 #### Required
-- [ ] Face emotion recognition
+- [X] Face emotion recognition
 - [ ] Insert animal face into people face
 - [ ] Insert quote
 - [ ] Read quote and play animal sound
@@ -13,7 +13,7 @@ An iOS Swift application. 5ting Cam (5ting means fighting) with a mission to cre
 - [ ] Change to another randomize animal face
 - [ ] Move quote position
 - [ ] Change quote color
-- [ ] Save picture to photo album
+- [X] Save picture to photo album
 - [ ] Share to social networks: Facebook, Instagram, Twitter
     
 #### Optional
