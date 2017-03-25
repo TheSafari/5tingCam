@@ -9,15 +9,47 @@
 import Foundation
 
 
+enum FACE_REACTION_TYPE : Int{
+    case anger = 0
+    case fear = 1
+    case happiness = 2
+    case sadness = 3
+    case surprise = 4
+}
 
-class FaceInfo: NSObject  {
+
+func  imageReaction(scores: [Float]) -> FACE_REACTION_TYPE{
+    var maxindex: Int = 0
+    
+    for i in 1...scores.count - 1 {
+        let newnumber: Float = scores[i];
+        if newnumber > scores[maxindex]{
+            maxindex = i
+        }
+    }
+    return FACE_REACTION_TYPE(rawValue: maxindex)!
+}
+
+
+class FaceInfo  {
+    
+    
     
     let faceScore: FaceScore
     let faceRectangle: FaceRectangle
     
+    var faceReactionType: FACE_REACTION_TYPE
+    
+    
+    
+    
+    
     init(faceScore: FaceScore , faceRectangle: FaceRectangle) {
+        
         self.faceRectangle = faceRectangle
         self.faceScore = faceScore
+        faceReactionType = imageReaction(scores: [faceScore.angerCore ,faceScore.fearScore, faceScore.happinessScore, faceScore.sadness ,faceScore.surprise])
+        
     }
     
     
@@ -32,7 +64,7 @@ class FaceInfo: NSObject  {
             let height = faceRectDict?["height"] as! Int
             let top = faceRectDict?["top"] as! Int
             let width = faceRectDict?["width"] as! Int
-                
+            
             faceRect = FaceRectangle(left: left, height: height, top: top, Width: width)
             
             let scoreDicts = item["scores"] as? NSDictionary
@@ -50,7 +82,7 @@ class FaceInfo: NSObject  {
             let faceinfo = FaceInfo(faceScore: facescore, faceRectangle: faceRect)
             callback(faceinfo, at)
         })
-
+        
     }
 }
 
@@ -83,7 +115,7 @@ class FaceScore {
     let surprise: Float
     
     init(angerCore: Float,contemptScore: Float,disgustScore: Float,fearScore: Float,happinessScore: Float,
-        neutralScore: Float, sadness: Float , surprise: Float
+         neutralScore: Float, sadness: Float , surprise: Float
         ) {
         self.angerCore = angerCore
         self.contemptScore = contemptScore
@@ -94,5 +126,5 @@ class FaceScore {
         self.sadness = sadness
         self.surprise = surprise
     }
-    
+
 }
