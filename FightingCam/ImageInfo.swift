@@ -9,29 +9,11 @@
 import Foundation
 
 
-enum FACE_REACTION_TYPE : Int{
-    case anger = 0
-    case fear = 1
-    case happiness = 2
-    case sadness = 3
-    case surprise = 4
-}
 
 
-func  imageReaction(scores: [Float]) -> FACE_REACTION_TYPE{
-    var maxindex: Int = 0
-    
-    for i in 1...scores.count - 1 {
-        let newnumber: Float = scores[i];
-        if newnumber > scores[maxindex]{
-            maxindex = i
-        }
-    }
-    return FACE_REACTION_TYPE(rawValue: maxindex)!
-}
 
 
-class FaceInfo  {
+final class FaceInfo  {
     
     
     

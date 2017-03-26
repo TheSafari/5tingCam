@@ -43,7 +43,8 @@ class DataManager{
                                                 if let responseDictionary = try! JSONSerialization.jsonObject(
                                                     with: data, options:[]) as? [[String : AnyObject]] {
                                                     completion(responseDictionary)
-                                                    print("Server --> Client \(responseDictionary)"  )
+                                                    print("Server --> Client ::"  )
+                                                    print(" \(responseDictionary)")
                                                     
                                                     
                                                 }
