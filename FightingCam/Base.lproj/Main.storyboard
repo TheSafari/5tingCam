@@ -122,16 +122,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DYg-14-xca">
-                                <rect key="frame" x="16" y="63" width="288" height="312"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j93-Xg-kOO" customClass="EmoticonImageView" customModule="FightingCam" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="j93-Xg-kOO" secondAttribute="trailing" id="MP9-7B-GFb"/>
+                            <constraint firstItem="2bC-fP-qq6" firstAttribute="top" secondItem="j93-Xg-kOO" secondAttribute="bottom" id="VkT-wQ-3Qs"/>
+                            <constraint firstItem="j93-Xg-kOO" firstAttribute="leading" secondItem="aVA-Od-NtA" secondAttribute="leading" id="lae-kd-Kdq"/>
+                            <constraint firstItem="j93-Xg-kOO" firstAttribute="top" secondItem="44x-yt-kXK" secondAttribute="bottom" id="uxz-sj-nLh"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QHD-hc-2dA"/>
+                    <navigationItem key="navigationItem" id="QHD-hc-2dA">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="BhN-16-Exk">
+                            <connections>
+                                <action selector="onBackButton:" destination="WUn-9x-1jL" id="iGF-3n-WVZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="nlK-KX-QXu">
+                            <connections>
+                                <action selector="onDoneButton:" destination="WUn-9x-1jL" id="Zc5-vb-e0o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="DYg-14-xca" id="HhI-lM-5GP"/>
+                        <outlet property="ivEmoticon" destination="j93-Xg-kOO" id="eZT-yR-8TS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIf-WA-ncD" userLabel="First Responder" sceneMemberID="firstResponder"/>

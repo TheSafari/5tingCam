@@ -45,23 +45,13 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
             //temp Test request API
-            //let imageData = UIImagePNGRepresentation(selectedImage!)
-            
-            
-//            DataManager.shareInstance.fetchFaceInfoFromUrl(data: imageData!, completion: { (items) -> (Void) in
-//                    // Handle after fetch to api success 
-//                print("Fetch Success Item = : \(items) ")
-//            })
-            
-            self.performSegue(withIdentifier: "goToEditScreen", sender: self)
-            
         } else{
             print("Something went wrong")
         }
-    
-    
-        picker.dismiss(animated: true) { 
-            self.performSegue(withIdentifier: "goToEdit", sender: self)
+        
+        
+        picker.dismiss(animated: true) {
+            self.performSegue(withIdentifier: "goToEditScreen", sender: self)
         }
         
         
@@ -73,8 +63,13 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let editVc = segue.destination as? EditViewController {
-                editVc.image = selectedImage
+        let navVc = segue.destination as? UINavigationController
+        let editVc = navVc?.topViewController as? EditViewController
+        if editVc != nil  {
+            print("abc")
+            editVc?.image = selectedImage
+        } else {
+            print("nil")
         }
     
     }
