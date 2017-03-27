@@ -14,6 +14,7 @@ class EditViewController: UIViewController {
     @IBOutlet weak var ivEmoticon: EmoticonImageView!
     
     var image: UIImage?
+    var faces = [FaceInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,10 @@ class EditViewController: UIViewController {
                 FaceInfo.object(at: index, fromList: items, callback: { (face: FaceInfo, index: Int) in
                     DispatchQueue.main.async(){
                         //code
+                        let quote =  RealmService.shareInstance.getQuotebyReactionType(reactionType: face.faceReactionType)
+                        print((quote?.quoteMessage)!)
                         self.ivEmoticon.addEmoticionFace(face: face)
+                        self.faces.append(face)
                     }
                 })
                 
@@ -56,7 +60,9 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func onDoneButton(_ sender: UIBarButtonItem) {
-        saveImage()
+        print("click done")
+        //saveImage()
+        saveImage2()
     }
     
     func saveImage(){
@@ -67,7 +73,41 @@ class EditViewController: UIViewController {
         UIGraphicsEndImageContext()
         
         UIImageWriteToSavedPhotosAlbum(imageSaved, nil, nil, nil)
+        print(">>>> done")
     }
+    
+    func saveImage2(){
+            let bgImage = ivEmoticon.image
+            print("width: \(bgImage?.size.width)")
+            print("height: \(bgImage?.size.height)")
+        
+            let newSize = CGSize(width: (bgImage?.size.width)!, height: (bgImage?.size.height)!)  // set this to what you need
+        
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+            
+            bgImage?.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+            for index in 0..<faces.count {
+                //let imageView = UIImageView(image: #imageLiteral(resourceName: "Picture1"))
+                let w = faces[index].faceRectangle.Width
+                let h = faces[index].faceRectangle.height
+                let emoticonPos = CGPoint(x: faces[index].faceRectangle.left, y: faces[index].faceRectangle.top)
+            
+                
+                let faceImage = #imageLiteral(resourceName: "Picture1")
+                faceImage.draw(in: CGRect(origin: emoticonPos, size: CGSize(width: w!, height: h!)))
+                
+            }
+            let lbl = UILabel()
+            lbl.text = "this is my quote"
+            lbl.draw(CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 200)))
+        
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            
+            UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil)
+            print("save done")
+    }
+
 
 
 }
