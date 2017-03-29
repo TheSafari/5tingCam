@@ -17,6 +17,15 @@ func incrementQuoteID(quote: Quote) -> Quote {
     return quote
 }
 
+func incrementStickerID(sticker: Sticker) -> Sticker {
+    let realm = try! Realm()
+    let increatedID = (realm.objects(Sticker.self).max(ofProperty: "id") as Int? ?? 0) + 1
+    sticker.id = increatedID
+    return sticker
+}
+
+
+
 
 enum FACE_REACTION_TYPE : Int{
     case anger = 0
