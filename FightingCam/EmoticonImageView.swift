@@ -93,7 +93,6 @@ class EmoticonImageView: UIView {
         label.textColor = UIColor.white
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         contentView.addSubview(label)
-        
     }
     
     func applyFilter(){
@@ -117,6 +116,8 @@ class EmoticonImageView: UIView {
             ivBackground?.image = result
         }
     }
+    
+    
     
     
 }
