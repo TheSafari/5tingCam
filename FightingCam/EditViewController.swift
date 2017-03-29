@@ -33,12 +33,17 @@ class EditViewController: UIViewController {
             for index in 0..<items.count{
                 FaceInfo.object(at: index, fromList: items, callback: { (face: FaceInfo, index: Int) in
                     DispatchQueue.main.async(){
-                        //code
+                        //get quotes
                         let quote =  RealmService.shareInstance.getQuotebyReactionType(reactionType: face.faceReactionType)
                         self.quote = quote?.quoteMessage
                         print(self.quote!)
-                        self.ivEmoticon.addEmoticionFace(face: face)
+                        //get emoticon
+                        let faceName = RealmService.shareInstance.getStickerbybyReactionType(reactionType: face.faceReactionType)?.stickerName
+                        let faceUiImage = UIImage(named: faceName!)
+                        
+                        self.ivEmoticon.addEmoticionFace(face: face, imageFace: faceUiImage!)
                         self.faces.append(face)
+                        //get animal sound
                     }
                 })
                 

@@ -67,9 +67,9 @@ class EmoticonImageView: UIView {
     
     
     
-    func addEmoticionFace(face: FaceInfo){
+    func addEmoticionFace(face: FaceInfo, imageFace: UIImage){
         
-            let imageView = UIImageView(image: #imageLiteral(resourceName: "Picture1"))
+            let imageView = UIImageView(image: imageFace)
             //create image view with (x,y) and (width, height)
             let x = self.offsetX! + CGFloat(face.faceRectangle.left) * ratio!
             let y = self.offsetY! + CGFloat(face.faceRectangle.top) * ratio!
@@ -77,6 +77,7 @@ class EmoticonImageView: UIView {
             let height = CGFloat(face.faceRectangle.height) * ratio!
             print("x \(x) - y: \(y) - widht: \(width) - height: \(height)")
             imageView.frame = CGRect(x: x, y: y, width: width, height: height)
+            //set ratio cho imageView
             contentView.addSubview(imageView)
             addQuote(quote: "It is a test string. Do you want more")
     }
