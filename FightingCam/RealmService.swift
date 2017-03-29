@@ -22,10 +22,26 @@ class RealmService{
         }
     }
     
+    func writeStickerData(sticker: Sticker){
+        
+        try! realm.write {
+            realm.add(incrementStickerID(sticker: sticker))
+        }
+    }
+
+    
     func getQuotebyReactionType(reactionType: FACE_REACTION_TYPE )->Quote? {
         let listquote = realm.objects(Quote.self).filter("type == %@", reactionType.rawValue)
         let index = random(from: 0 ... listquote.count - 1)
         return Array(listquote)[index]
         
+    }
+    
+    func getStickerbybyReactionType(reactionType: FACE_REACTION_TYPE )->Sticker? {
+        let listSticker = realm.objects(Sticker.self).filter("type == %@", reactionType.rawValue)
+        print(Array(listSticker))
+        print(listSticker.count)
+        let index = random(from: 0 ... listSticker.count - 1)
+        return Array(listSticker)[index]
     }
 }
