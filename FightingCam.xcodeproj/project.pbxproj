@@ -22,11 +22,6 @@
 		20C97F981E87928700F9C926 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C97F971E87928700F9C926 /* Quote.swift */; };
 		20DB7DE31E7DDE4E00ADACC4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB7DE21E7DDE4E00ADACC4 /* DataManager.swift */; };
 		20DB7DE61E7DDE5F00ADACC4 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */; };
-		20F8DBC81E8BE25700F182C3 /* Anger in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBC31E8BE25700F182C3 /* Anger */; };
-		20F8DBC91E8BE25700F182C3 /* Fear in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBC41E8BE25700F182C3 /* Fear */; };
-		20F8DBCA1E8BE25700F182C3 /* Happiness in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBC51E8BE25700F182C3 /* Happiness */; };
-		20F8DBCB1E8BE25700F182C3 /* Sadness in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBC61E8BE25700F182C3 /* Sadness */; };
-		20F8DBCC1E8BE25700F182C3 /* Suprise in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBC71E8BE25700F182C3 /* Suprise */; };
 		20F8DBCE1E8BE2CB00F182C3 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F8DBCD1E8BE2CB00F182C3 /* Sticker.swift */; };
 		20F8DBD11E8BEB7C00F182C3 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBD01E8BEB7C00F182C3 /* default.realm */; };
 		C99795451E88352E003D6BB4 /* EmoticonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99795431E88352E003D6BB4 /* EmoticonImageView.swift */; };
@@ -64,11 +59,6 @@
 		20C97F971E87928700F9C926 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		20DB7DE21E7DDE4E00ADACC4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
-		20F8DBC31E8BE25700F182C3 /* Anger */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Anger; sourceTree = "<group>"; };
-		20F8DBC41E8BE25700F182C3 /* Fear */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fear; sourceTree = "<group>"; };
-		20F8DBC51E8BE25700F182C3 /* Happiness */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Happiness; sourceTree = "<group>"; };
-		20F8DBC61E8BE25700F182C3 /* Sadness */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sadness; sourceTree = "<group>"; };
-		20F8DBC71E8BE25700F182C3 /* Suprise */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Suprise; sourceTree = "<group>"; };
 		20F8DBCD1E8BE2CB00F182C3 /* Sticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		20F8DBD01E8BEB7C00F182C3 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		C99795431E88352E003D6BB4 /* EmoticonImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonImageView.swift; sourceTree = "<group>"; };
@@ -110,7 +100,6 @@
 			children = (
 				20A9A5421E7964E200A62A44 /* FightingCam */,
 				20A9A5411E7964E200A62A44 /* Products */,
-				20F8DBC21E8BE22D00F182C3 /* ReourcesSticker */,
 				20C97F901E87921000F9C926 /* Realm.framework */,
 				20C97F911E87921000F9C926 /* RealmSwift.framework */,
 			);
@@ -159,18 +148,6 @@
 				20F8DBCD1E8BE2CB00F182C3 /* Sticker.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		20F8DBC21E8BE22D00F182C3 /* ReourcesSticker */ = {
-			isa = PBXGroup;
-			children = (
-				20F8DBC31E8BE25700F182C3 /* Anger */,
-				20F8DBC41E8BE25700F182C3 /* Fear */,
-				20F8DBC51E8BE25700F182C3 /* Happiness */,
-				20F8DBC61E8BE25700F182C3 /* Sadness */,
-				20F8DBC71E8BE25700F182C3 /* Suprise */,
-			);
-			name = ReourcesSticker;
 			sourceTree = "<group>";
 		};
 		C99795421E8834E3003D6BB4 /* CustomView */ = {
@@ -243,14 +220,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20F8DBC81E8BE25700F182C3 /* Anger in Resources */,
 				20A9A54E1E7964E200A62A44 /* LaunchScreen.storyboard in Resources */,
 				C99795461E88352E003D6BB4 /* EmoticonImageView.xib in Resources */,
-				20F8DBC91E8BE25700F182C3 /* Fear in Resources */,
-				20F8DBCC1E8BE25700F182C3 /* Suprise in Resources */,
 				20F8DBD11E8BEB7C00F182C3 /* default.realm in Resources */,
-				20F8DBCA1E8BE25700F182C3 /* Happiness in Resources */,
-				20F8DBCB1E8BE25700F182C3 /* Sadness in Resources */,
 				20A9A54B1E7964E200A62A44 /* Assets.xcassets in Resources */,
 				20A9A5491E7964E200A62A44 /* Main.storyboard in Resources */,
 			);
