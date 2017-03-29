@@ -25,6 +25,8 @@
 		20DB7DE61E7DDE5F00ADACC4 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */; };
 		C99795451E88352E003D6BB4 /* EmoticonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99795431E88352E003D6BB4 /* EmoticonImageView.swift */; };
 		C99795461E88352E003D6BB4 /* EmoticonImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99795441E88352E003D6BB4 /* EmoticonImageView.xib */; };
+		C9CF42FB1E8BE1CA00843041 /* Audio2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9CF42FA1E8BE1CA00843041 /* Audio2.wav */; };
+		C9CF42FE1E8BE60B00843041 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF42FD1E8BE60B00843041 /* Speaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +63,8 @@
 		20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		C99795431E88352E003D6BB4 /* EmoticonImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonImageView.swift; sourceTree = "<group>"; };
 		C99795441E88352E003D6BB4 /* EmoticonImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmoticonImageView.xib; sourceTree = "<group>"; };
+		C9CF42FA1E8BE1CA00843041 /* Audio2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Audio2.wav; sourceTree = "<group>"; };
+		C9CF42FD1E8BE60B00843041 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 		20A9A5371E7964E200A62A44 = {
 			isa = PBXGroup;
 			children = (
+				C9CF42F71E8BDFAF00843041 /* Resources */,
 				20A9A5421E7964E200A62A44 /* FightingCam */,
 				20A9A5411E7964E200A62A44 /* Products */,
 				20C97F901E87921000F9C926 /* Realm.framework */,
@@ -114,6 +119,7 @@
 		20A9A5421E7964E200A62A44 /* FightingCam */ = {
 			isa = PBXGroup;
 			children = (
+				C9CF42FC1E8BE5C000843041 /* TextToSpeech */,
 				C99795421E8834E3003D6BB4 /* CustomView */,
 				20292E571E88080C00A14148 /* default.realm */,
 				2031372E1E87C0A5000CDFD4 /* Utility */,
@@ -154,6 +160,30 @@
 				C99795441E88352E003D6BB4 /* EmoticonImageView.xib */,
 			);
 			name = CustomView;
+			sourceTree = "<group>";
+		};
+		C9CF42F71E8BDFAF00843041 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9CF42F91E8BE1CA00843041 /* Sounds */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C9CF42F91E8BE1CA00843041 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C9CF42FA1E8BE1CA00843041 /* Audio2.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		C9CF42FC1E8BE5C000843041 /* TextToSpeech */ = {
+			isa = PBXGroup;
+			children = (
+				C9CF42FD1E8BE60B00843041 /* Speaker.swift */,
+			);
+			name = TextToSpeech;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9CF42FB1E8BE1CA00843041 /* Audio2.wav in Resources */,
 				20A9A54E1E7964E200A62A44 /* LaunchScreen.storyboard in Resources */,
 				C99795461E88352E003D6BB4 /* EmoticonImageView.xib in Resources */,
 				20292E581E88080C00A14148 /* default.realm in Resources */,
@@ -239,6 +270,7 @@
 				20DB7DE31E7DDE4E00ADACC4 /* DataManager.swift in Sources */,
 				20122A9F1E7CD4FD00734DAF /* EditViewController.swift in Sources */,
 				20C97F981E87928700F9C926 /* Quote.swift in Sources */,
+				C9CF42FE1E8BE60B00843041 /* Speaker.swift in Sources */,
 				20122AA21E7CE2BA00734DAF /* HomeViewController.swift in Sources */,
 				20292E551E87EE8500A14148 /* RealmService.swift in Sources */,
 			);
