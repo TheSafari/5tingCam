@@ -31,6 +31,7 @@
 		20F8DBD11E8BEB7C00F182C3 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBD01E8BEB7C00F182C3 /* default.realm */; };
 		C99795451E88352E003D6BB4 /* EmoticonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99795431E88352E003D6BB4 /* EmoticonImageView.swift */; };
 		C99795461E88352E003D6BB4 /* EmoticonImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99795441E88352E003D6BB4 /* EmoticonImageView.xib */; };
+		C9CF43011E8BEE6E00843041 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF43001E8BEE6E00843041 /* Speaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +74,7 @@
 		20F8DBD01E8BEB7C00F182C3 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		C99795431E88352E003D6BB4 /* EmoticonImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonImageView.swift; sourceTree = "<group>"; };
 		C99795441E88352E003D6BB4 /* EmoticonImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmoticonImageView.xib; sourceTree = "<group>"; };
+		C9CF43001E8BEE6E00843041 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		20A9A5421E7964E200A62A44 /* FightingCam */ = {
 			isa = PBXGroup;
 			children = (
+				C9CF42FF1E8BEE2F00843041 /* TextToSpeech */,
 				20F8DBD01E8BEB7C00F182C3 /* default.realm */,
 				C99795421E8834E3003D6BB4 /* CustomView */,
 				2031372E1E87C0A5000CDFD4 /* Utility */,
@@ -180,6 +183,14 @@
 				C99795441E88352E003D6BB4 /* EmoticonImageView.xib */,
 			);
 			name = CustomView;
+			sourceTree = "<group>";
+		};
+		C9CF42FF1E8BEE2F00843041 /* TextToSpeech */ = {
+			isa = PBXGroup;
+			children = (
+				C9CF43001E8BEE6E00843041 /* Speaker.swift */,
+			);
+			name = TextToSpeech;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +279,7 @@
 				20DB7DE61E7DDE5F00ADACC4 /* ImageInfo.swift in Sources */,
 				203137301E87C0C2000CDFD4 /* GlobalFunction.swift in Sources */,
 				20DB7DE31E7DDE4E00ADACC4 /* DataManager.swift in Sources */,
+				C9CF43011E8BEE6E00843041 /* Speaker.swift in Sources */,
 				20122A9F1E7CD4FD00734DAF /* EditViewController.swift in Sources */,
 				20C97F981E87928700F9C926 /* Quote.swift in Sources */,
 				20122AA21E7CE2BA00734DAF /* HomeViewController.swift in Sources */,
