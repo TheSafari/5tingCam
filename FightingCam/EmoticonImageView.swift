@@ -77,9 +77,10 @@ class EmoticonImageView: UIView {
             let height = CGFloat(face.faceRectangle.height) * ratio!
             print("x \(x) - y: \(y) - widht: \(width) - height: \(height)")
             imageView.frame = CGRect(x: x, y: y, width: width, height: height)
+            imageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+            imageView.clipsToBounds = true
             //set ratio cho imageView
             contentView.addSubview(imageView)
-            addQuote(quote: "It is a test string. Do you want more")
     }
     
     func addQuote(quote: String){

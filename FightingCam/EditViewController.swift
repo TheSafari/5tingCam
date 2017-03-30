@@ -37,6 +37,7 @@ class EditViewController: UIViewController {
                         let quote =  RealmService.shareInstance.getQuotebyReactionType(reactionType: face.faceReactionType)
                         self.quote = quote?.quoteMessage
                         print(self.quote!)
+                        self.ivEmoticon.addQuote(quote: self.quote!)
                         //get emoticon
                         let faceName = RealmService.shareInstance.getStickerbybyReactionType(reactionType: face.faceReactionType)?.stickerName
                         let faceUiImage = UIImage(named: faceName!)
@@ -78,6 +79,27 @@ class EditViewController: UIViewController {
         //playMusic()
         textToSpeech()
     }
+    
+    @IBAction func onBackClick(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onSoundClick(_ sender: UIButton) {
+        print("click done")
+        //playMusic()
+        textToSpeech()
+    }
+    
+    @IBAction func onDoneClick(_ sender: UIButton) {
+        //saveImage()
+        saveImage2()
+    }
+    
+    @IBAction func onFilter(_ sender: UIButton) {
+        //open filter
+    }
+    
+    
     
     func saveImage(){
         let scale: CGFloat = 1

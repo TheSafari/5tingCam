@@ -13,7 +13,6 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     var selectedImage: UIImage?
     var pathOfImage: UIBezierPath?
     
-    @IBOutlet weak var ivBg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +50,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
         
         
         picker.dismiss(animated: true) {
-            self.performSegue(withIdentifier: "goToEditScreen", sender: self)
+            self.performSegue(withIdentifier: "gotoEditScreen", sender: self)
         }
         
         
@@ -63,8 +62,8 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navVc = segue.destination as? UINavigationController
-        let editVc = navVc?.topViewController as? EditViewController
+        //let navVc = segue.destination as? UINavigationController
+        let editVc = segue.destination as? EditViewController
         if editVc != nil  {
             print("abc")
             editVc?.image = selectedImage
@@ -75,7 +74,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     }
     
     @IBAction func onClickSetting(_ sender: UIButton) {
-       performSegue(withIdentifier: "goToEditScreen", sender: self)
+       performSegue(withIdentifier: "gotoEditScreen", sender: self)
     }
     
 }
