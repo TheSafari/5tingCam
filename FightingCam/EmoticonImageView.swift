@@ -85,16 +85,17 @@ class EmoticonImageView: UIView {
     
     func addQuote(quote: String){
         //create original position of quote
-        let x = (imageRect?.origin.x)! + 8
+        let x = (imageRect?.origin.x)! + (imageRect?.size.width)! * 0.1
         let y = (imageRect?.origin.y)! + (imageRect?.size.height)! * 0.7
         
-        let label = UILabel(frame: CGRect(x: x, y: y, width: 200, height: 100))
+        let label = UILabel(frame: CGRect(x: x, y: y, width: (imageRect?.size.width)! * 0.8, height: 100))
         label.textAlignment = .center
         label.text = quote
         label.numberOfLines = 0
         label.textColor = UIColor.white
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         contentView.addSubview(label)
+        //add custom font
     }
     
     func applyFilter(){
