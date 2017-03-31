@@ -94,6 +94,7 @@ class EmoticonImageView: UIView {
         label.numberOfLines = 0
         label.textColor = UIColor.white
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = UIFont(name: "Yellowtail", size: 20.0)
         contentView.addSubview(label)
         //add custom font
     }
