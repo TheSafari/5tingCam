@@ -67,8 +67,7 @@ class EmoticonImageView: UIView {
     
     
     
-    func addEmoticionFace(face: FaceInfo, imageFace: UIImage){
-        
+    func addEmoticionFace(face: FaceInfo, imageFace: UIImage){        
             let imageView = UIImageView(image: imageFace)
             //create image view with (x,y) and (width, height)
             let x = self.offsetX! + CGFloat(face.faceRectangle.left) * ratio!
@@ -96,7 +95,7 @@ class EmoticonImageView: UIView {
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = UIFont(name: "Yellowtail", size: 20.0)
         contentView.addSubview(label)
-        //add custom font
+        
     }
     
     func applyFilter(){

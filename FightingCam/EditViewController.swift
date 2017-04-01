@@ -19,6 +19,7 @@ class EditViewController: UIViewController {
     var image: UIImage?
     var faces = [FaceInfo]()
     var quote : String?
+    var faceUiImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +46,9 @@ class EditViewController: UIViewController {
                         //get emoticon
                         let faceName = RealmService.shareInstance.getStickerbybyReactionType(reactionType: face.faceReactionType)?.stickerName
                         
-                        let faceUiImage = UIImage(named: faceName!)
+                        self.faceUiImage = UIImage(named: faceName!)
                         
-                        self.ivEmoticon.addEmoticionFace(face: face, imageFace: faceUiImage!)
+                        self.ivEmoticon.addEmoticionFace(face: face, imageFace: self.faceUiImage!)
                         self.faces.append(face)
                         //get animal sound
                         
@@ -127,20 +128,30 @@ class EditViewController: UIViewController {
         
         bgImage?.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
         for index in 0..<faces.count {
-            //let imageView = UIImageView(image: #imageLiteral(resourceName: "Picture1"))
             let w = faces[index].faceRectangle.Width
             let h = faces[index].faceRectangle.height
             let emoticonPos = CGPoint(x: faces[index].faceRectangle.left, y: faces[index].faceRectangle.top)
             
             
-            let faceImage = #imageLiteral(resourceName: "Picture1")
-            faceImage.draw(in: CGRect(origin: emoticonPos, size: CGSize(width: w!, height: h!)))
+            let faceImage = self.faceUiImage
+            faceImage?.draw(in: CGRect(origin: emoticonPos, size: CGSize(width: w!, height: h!)))
             
         }
         
-        let lbl = UILabel()
-        lbl.text = "this is my quote"
-        lbl.draw(CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 200)))
+        let quoteX = (bgImage?.size.width)! * 0.1
+        let quoteY = (bgImage?.size.height)! * 0.7
+        let lbl = UILabel(frame: CGRect(x: quoteX, y: quoteY, width: (bgImage?.size.width)! * 0.8, height: 100))
+        lbl.text = self.quote
+        lbl.textAlignment = .center
+        lbl.text = quote
+        lbl.numberOfLines = 0
+        lbl.textColor = UIColor.white
+        lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
+        let fontSize = 20.0 / ivEmoticon.ratio!
+        lbl.font = UIFont(name: "Yellowtail", size: fontSize)
+        //lbl.draw(CGRect(x: 50, y: 750, width: (bgImage?.size.width)! * 0.8, height: 100))
+        lbl.drawText(in: CGRect(x: quoteX, y: quoteY, width: (bgImage?.size.width)! * 0.8, height: 100))
+        
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -148,7 +159,7 @@ class EditViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil)
         print("save done")
     }
-    
+
     var bombSoundEffect: AVAudioPlayer!
     func playMusic(fullName: String){
         var component = fullName.components(separatedBy: ".")
