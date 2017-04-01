@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class ShareViewController: UIViewController {
 
@@ -36,9 +37,22 @@ class ShareViewController: UIViewController {
     }
     
     @IBAction func onFbShare(_ sender: UIButton) {
+        
+        if let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) {
+            vc.setInitialText("5Ting Camp!")
+            vc.add(imageSaved!)
+            vc.add(URL(string: "ntkhoi.github.io"))
+            present(vc, animated: true)
+        }
     }
     
     @IBAction func onTwitterShare(_ sender: UIButton) {
+        
+        let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
+        vc?.add(imageSaved!)
+        vc?.add(URL(string: "ntkhoi.github.io"))
+        vc?.setInitialText("5Ting Camp")
+        self.present(vc!, animated: true, completion: nil)
     }
     
     /*

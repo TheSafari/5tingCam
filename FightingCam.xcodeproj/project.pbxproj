@@ -67,6 +67,7 @@
 		20122AA11E7CE2BA00734DAF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		201CC89B1E8FF6D400C5B46F /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		201CC89D1E9004D200C5B46F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		202203B61E90470700A11618 /* FightingCam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FightingCam.entitlements; sourceTree = "<group>"; };
 		20292E541E87EE8500A14148 /* RealmService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		2031372F1E87C0C2000CDFD4 /* GlobalFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
 		20A9A5401E7964E200A62A44 /* FightingCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FightingCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +161,7 @@
 		20A9A5421E7964E200A62A44 /* FightingCam */ = {
 			isa = PBXGroup;
 			children = (
+				202203B61E90470700A11618 /* FightingCam.entitlements */,
 				20DE16FA1E8F74B9002F6494 /* default.realm */,
 				C9B75BBE1E8C2C4A0077AF76 /* Resources */,
 				C9CF42FF1E8BEE2F00843041 /* TextToSpeech */,
@@ -307,6 +309,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 87E55Q9ME9;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -539,6 +546,7 @@
 			baseConfigurationReference = DD9A77B7CD02BA14DBBBE341 /* Pods-FightingCam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FightingCam/FightingCam.entitlements;
 				DEVELOPMENT_TEAM = 87E55Q9ME9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -558,6 +566,7 @@
 			baseConfigurationReference = BDD7AF3FB111309F097B4FBF /* Pods-FightingCam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FightingCam/FightingCam.entitlements;
 				DEVELOPMENT_TEAM = 87E55Q9ME9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
