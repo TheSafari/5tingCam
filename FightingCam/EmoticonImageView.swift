@@ -109,9 +109,21 @@ class EmoticonImageView: UIView {
         
         let coreImage = CIImage(cgImage: cgimg)
         
-        let filter = CIFilter(name: "CISepiaTone")
+//        let filter = CIFilter(name: "CISepiaTone")
+//        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+//        filter?.setValue(1, forKey: kCIInputIntensityKey)
+
+//        let filter = CIFilter(name: "CIVignette")
+//        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+//        filter?.setValue(1, forKey: kCIInputIntensityKey)
+        
+//        let filter = CIFilter(name: "CIPhotoEffectTransfer")
+//        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+        
+        let filter = CIFilter(name: "CIPhotoEffectFade")
         filter?.setValue(coreImage, forKey: kCIInputImageKey)
-        filter?.setValue(1, forKey: kCIInputIntensityKey)
+        
+        
         
         if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
             let cgimgresult = context.createCGImage(output, from: output.extent)
