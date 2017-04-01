@@ -15,6 +15,8 @@ final class Sticker: Object {
     dynamic var type: Int = -1
     dynamic var stickerName: String = ""
     
+    dynamic var soundName: String?
+    
     override static func primaryKey() -> String? {
         return "id"
     }

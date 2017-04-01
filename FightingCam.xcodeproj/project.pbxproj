@@ -22,8 +22,8 @@
 		20C97F981E87928700F9C926 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C97F971E87928700F9C926 /* Quote.swift */; };
 		20DB7DE31E7DDE4E00ADACC4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB7DE21E7DDE4E00ADACC4 /* DataManager.swift */; };
 		20DB7DE61E7DDE5F00ADACC4 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */; };
+		20DE16FB1E8F74B9002F6494 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 20DE16FA1E8F74B9002F6494 /* default.realm */; };
 		20F8DBCE1E8BE2CB00F182C3 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F8DBCD1E8BE2CB00F182C3 /* Sticker.swift */; };
-		20F8DBD11E8BEB7C00F182C3 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 20F8DBD01E8BEB7C00F182C3 /* default.realm */; };
 		2891532F7BDD2F4B059F5BA1 /* Pods_FightingCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B11B96EC5D01D093E9DE1C3 /* Pods_FightingCam.framework */; };
 		C973FFFF1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C973FFFE1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf */; };
 		C99795451E88352E003D6BB4 /* EmoticonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99795431E88352E003D6BB4 /* EmoticonImageView.swift */; };
@@ -77,8 +77,8 @@
 		20C97F971E87928700F9C926 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		20DB7DE21E7DDE4E00ADACC4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		20DB7DE51E7DDE5F00ADACC4 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
+		20DE16FA1E8F74B9002F6494 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		20F8DBCD1E8BE2CB00F182C3 /* Sticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
-		20F8DBD01E8BEB7C00F182C3 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		8B11B96EC5D01D093E9DE1C3 /* Pods_FightingCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FightingCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD7AF3FB111309F097B4FBF /* Pods-FightingCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FightingCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-FightingCam/Pods-FightingCam.release.xcconfig"; sourceTree = "<group>"; };
 		C973FFFE1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yellowtail-Regular.ttf"; sourceTree = "<group>"; };
@@ -157,9 +157,9 @@
 		20A9A5421E7964E200A62A44 /* FightingCam */ = {
 			isa = PBXGroup;
 			children = (
+				20DE16FA1E8F74B9002F6494 /* default.realm */,
 				C9B75BBE1E8C2C4A0077AF76 /* Resources */,
 				C9CF42FF1E8BEE2F00843041 /* TextToSpeech */,
-				20F8DBD01E8BEB7C00F182C3 /* default.realm */,
 				C99795421E8834E3003D6BB4 /* CustomView */,
 				2031372E1E87C0A5000CDFD4 /* Utility */,
 				20DB7DE41E7DDE5800ADACC4 /* Model */,
@@ -341,7 +341,7 @@
 				C99795461E88352E003D6BB4 /* EmoticonImageView.xib in Resources */,
 				C9B75BD91E8C2CF80077AF76 /* Audio13.wav in Resources */,
 				C9B75BD51E8C2CF80077AF76 /* Audio9.wav in Resources */,
-				20F8DBD11E8BEB7C00F182C3 /* default.realm in Resources */,
+				20DE16FB1E8F74B9002F6494 /* default.realm in Resources */,
 				C9B75BD31E8C2CF80077AF76 /* Audio7.wav in Resources */,
 				C9B75BD71E8C2CF80077AF76 /* Audio11.wav in Resources */,
 				20A9A54B1E7964E200A62A44 /* Assets.xcassets in Resources */,

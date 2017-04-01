@@ -44,6 +44,7 @@ class EditViewController: UIViewController {
                         self.ivEmoticon.addQuote(quote: self.quote!)
                         //get emoticon
                         let faceName = RealmService.shareInstance.getStickerbybyReactionType(reactionType: face.faceReactionType)?.stickerName
+                        
                         let faceUiImage = UIImage(named: faceName!)
                         
                         self.ivEmoticon.addEmoticionFace(face: face, imageFace: faceUiImage!)
