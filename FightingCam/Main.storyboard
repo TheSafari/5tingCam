@@ -156,29 +156,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f48-oz-eyl" customClass="UIViewX" customModule="FightingCam" customModuleProvider="target">
-                                <rect key="frame" x="6" y="516" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-Rb-uZv">
-                                        <rect key="frame" x="11" y="11" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="ic_picture"/>
-                                        <connections>
-                                            <action selector="onFilter:" destination="WUn-9x-1jL" eventType="touchUpInside" id="XAS-ts-0Fk"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="22"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JEs-NP-Wf0" customClass="UIViewX" customModule="FightingCam" customModuleProvider="target">
                                 <rect key="frame" x="264" y="29" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -225,16 +202,88 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GK2-PO-oEo">
+                                <rect key="frame" x="0.0" y="508" width="320" height="122"/>
+                                <subviews>
+                                    <view alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f48-oz-eyl" customClass="UIViewX" customModule="FightingCam" customModuleProvider="target">
+                                        <rect key="frame" x="138" y="8" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w59-aV-IYb">
+                                        <rect key="frame" x="33" y="72" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_picture"/>
+                                        <connections>
+                                            <action selector="onFilter1Click:" destination="WUn-9x-1jL" eventType="touchUpInside" id="XUF-IS-0Bw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbN-NI-Fo4">
+                                        <rect key="frame" x="100" y="72" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_picture"/>
+                                        <connections>
+                                            <action selector="onFilter2Click:" destination="WUn-9x-1jL" eventType="touchUpInside" id="xtV-5Z-RG8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-a9-y0e">
+                                        <rect key="frame" x="239" y="72" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_picture"/>
+                                        <connections>
+                                            <action selector="onFilter4Click:" destination="WUn-9x-1jL" eventType="touchUpInside" id="6BM-LC-vdG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFG-yP-1fQ">
+                                        <rect key="frame" x="171" y="72" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_picture"/>
+                                        <connections>
+                                            <action selector="onFilter3Click:" destination="WUn-9x-1jL" eventType="touchUpInside" id="Ecy-uq-Leh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-Rb-uZv">
+                                        <rect key="frame" x="149" y="19" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_picture"/>
+                                        <connections>
+                                            <action selector="onFilter:" destination="WUn-9x-1jL" eventType="touchUpInside" id="XAS-ts-0Fk"/>
+                                            <action selector="onFilterClick:" destination="WUn-9x-1jL" eventType="touchUpInside" id="dTQ-ZE-fhy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="1Lv-9r-fxQ"/>
+                                    <constraint firstAttribute="height" constant="122" id="6k7-ZL-Rte"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="GK2-PO-oEo" firstAttribute="leading" secondItem="aVA-Od-NtA" secondAttribute="leading" id="J4A-l6-eoi"/>
                             <constraint firstItem="j93-Xg-kOO" firstAttribute="leading" secondItem="aVA-Od-NtA" secondAttribute="leading" id="dIj-CW-kgq"/>
                             <constraint firstAttribute="trailing" secondItem="j93-Xg-kOO" secondAttribute="trailing" id="e1s-ch-OjE"/>
                             <constraint firstItem="2bC-fP-qq6" firstAttribute="top" secondItem="j93-Xg-kOO" secondAttribute="bottom" id="gu9-hg-1Ic"/>
+                            <constraint firstAttribute="bottom" secondItem="GK2-PO-oEo" secondAttribute="bottom" constant="-62" id="tAp-0u-sb2"/>
                             <constraint firstItem="j93-Xg-kOO" firstAttribute="top" secondItem="44x-yt-kXK" secondAttribute="bottom" id="ywM-CT-z76"/>
+                            <constraint firstAttribute="trailing" secondItem="GK2-PO-oEo" secondAttribute="trailing" id="z3P-If-9R2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnFilter1" destination="w59-aV-IYb" id="OJB-19-OvV"/>
+                        <outlet property="btnFilter2" destination="XbN-NI-Fo4" id="h2C-5I-6mc"/>
+                        <outlet property="btnFilter3" destination="HUI-a9-y0e" id="iLc-v0-kRA"/>
+                        <outlet property="btnFilter4" destination="sFG-yP-1fQ" id="C8y-k4-RUO"/>
+                        <outlet property="darkFillView" destination="f48-oz-eyl" id="0Pc-1C-L7E"/>
+                        <outlet property="filerMenuView" destination="GK2-PO-oEo" id="qoc-TP-qkB"/>
                         <outlet property="ivEmoticon" destination="j93-Xg-kOO" id="eZT-yR-8TS"/>
                     </connections>
                 </viewController>

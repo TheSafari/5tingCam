@@ -24,6 +24,7 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initFilterMenu()
         
         speaker = Speaker()
         speaker?.setMyDelegate(self)
@@ -187,7 +188,68 @@ class EditViewController: UIViewController {
         speaker?.speak(self.quote!, in: "en-US")
     }
     
+    @IBOutlet weak var filerMenuView: UIView!
+    @IBOutlet weak var darkFillView: UIViewX!
+    @IBOutlet weak var btnFilter1: UIButton!
+    @IBOutlet weak var btnFilter2: UIButton!
+    @IBOutlet weak var btnFilter3: UIButton!
+    @IBOutlet weak var btnFilter4: UIButton!
     
+    func initFilterMenu(){
+        btnFilter1.alpha = 0
+        btnFilter2.alpha = 0
+        btnFilter3.alpha = 0
+        btnFilter4.alpha = 0
+    }
+    
+    @IBAction func onFilterClick(_ sender: UIButton) {
+        if darkFillView.transform == CGAffineTransform.identity {
+            UIView.animate(withDuration: 0.7, animations: {
+                self.darkFillView.transform = CGAffineTransform(scaleX: 11, y: 11)
+                self.filerMenuView.transform = CGAffineTransform(translationX: 0, y: -62)
+            }, completion: { (true) in
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.toggleFilterButton()
+                })
+                
+            })
+            
+        } else {
+            UIView.animate(withDuration: 0.7, animations: {
+                self.darkFillView.transform = .identity
+                self.filerMenuView.transform = .identity
+                self.toggleFilterButton()
+            }, completion: { (true) in
+                
+            })
+        }
+    }
+    
+    func toggleFilterButton(){
+        let alpha = CGFloat(btnFilter1.alpha == 0 ? 1 :0)
+        btnFilter1.alpha = alpha
+        btnFilter2.alpha = alpha
+        btnFilter3.alpha = alpha
+        btnFilter4.alpha = alpha
+    }
+    
+    @IBAction func onFilter1Click(_ sender: UIButton) {
+        ivEmoticon.applyFilter()
+    }
+    
+    @IBAction func onFilter2Click(_ sender: UIButton) {
+        ivEmoticon.applyFilter2()
+    }
+    
+    @IBAction func onFilter3Click(_ sender: UIButton) {
+        ivEmoticon.applyFilter3()
+    }
+    
+    @IBAction func onFilter4Click(_ sender: UIButton) {
+        ivEmoticon.applyFilter4()
+    }
+    
+
 }
 
 extension EditViewController : SpeakerDelegate {

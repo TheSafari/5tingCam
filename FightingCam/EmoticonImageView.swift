@@ -99,7 +99,8 @@ class EmoticonImageView: UIView {
     }
     
     func applyFilter(){
-        guard let image = ivBackground?.image, let cgimg = image.cgImage else {
+        let tamp = UIImage(cgImage: (self.image?.cgImage)!)
+        guard let cgimg = tamp.cgImage?.copy() else {
             print("imageView doesn't have an image!")
             return
         }
@@ -109,20 +110,8 @@ class EmoticonImageView: UIView {
         
         let coreImage = CIImage(cgImage: cgimg)
         
-//        let filter = CIFilter(name: "CISepiaTone")
-//        filter?.setValue(coreImage, forKey: kCIInputImageKey)
-//        filter?.setValue(1, forKey: kCIInputIntensityKey)
-
-//        let filter = CIFilter(name: "CIVignette")
-//        filter?.setValue(coreImage, forKey: kCIInputImageKey)
-//        filter?.setValue(1, forKey: kCIInputIntensityKey)
-        
-//        let filter = CIFilter(name: "CIPhotoEffectTransfer")
-//        filter?.setValue(coreImage, forKey: kCIInputImageKey)
-        
         let filter = CIFilter(name: "CIPhotoEffectFade")
         filter?.setValue(coreImage, forKey: kCIInputImageKey)
-        
         
         
         if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
@@ -130,6 +119,79 @@ class EmoticonImageView: UIView {
             let result = UIImage(cgImage: cgimgresult!)
             ivBackground?.image = result
         }
+    }
+    
+    func applyFilter2(){
+        let tamp = UIImage(cgImage: (self.image?.cgImage)!)
+        guard let cgimg = tamp.cgImage?.copy() else {
+            print("imageView doesn't have an image!")
+            return
+        }
+        
+        let openGLContext = EAGLContext(api: .openGLES3)
+        let context = CIContext(eaglContext: openGLContext!)
+        
+        let coreImage = CIImage(cgImage: cgimg)
+        
+        let filter = CIFilter(name: "CISepiaTone")
+        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+        filter?.setValue(1, forKey: kCIInputIntensityKey)
+        
+        
+        if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
+            let cgimgresult = context.createCGImage(output, from: output.extent)
+            let result = UIImage(cgImage: cgimgresult!)
+            ivBackground?.image = result
+        }
+    }
+    
+    func applyFilter3(){
+        let tamp = UIImage(cgImage: (self.image?.cgImage)!)
+        guard let cgimg = tamp.cgImage?.copy() else {
+            print("imageView doesn't have an image!")
+            return
+        }
+        
+        let openGLContext = EAGLContext(api: .openGLES3)
+        let context = CIContext(eaglContext: openGLContext!)
+        
+        let coreImage = CIImage(cgImage: cgimg)
+        
+        
+        let filter = CIFilter(name: "CIVignette")
+        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+        filter?.setValue(1, forKey: kCIInputIntensityKey)
+        
+        if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
+            let cgimgresult = context.createCGImage(output, from: output.extent)
+            let result = UIImage(cgImage: cgimgresult!)
+            ivBackground?.image = result
+        }
+    }
+    
+    func applyFilter4(){
+        let tamp = UIImage(cgImage: (self.image?.cgImage)!)
+        guard let cgimg = tamp.cgImage?.copy() else {
+            print("imageView doesn't have an image!")
+            return
+        }
+        
+        let openGLContext = EAGLContext(api: .openGLES3)
+        let context = CIContext(eaglContext: openGLContext!)
+        
+        let coreImage = CIImage(cgImage: cgimg)
+        
+        let filter = CIFilter(name: "CIPhotoEffectTransfer")
+        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+        
+        
+        if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
+            let cgimgresult = context.createCGImage(output, from: output.extent)
+            let result = UIImage(cgImage: cgimgresult!)
+            ivBackground?.image = result
+        }
+        
+        
     }
     
     
