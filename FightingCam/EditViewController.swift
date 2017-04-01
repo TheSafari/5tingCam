@@ -182,6 +182,8 @@ class EditViewController: UIViewController {
     func textToSpeech(){
         speaker?.speak(self.quote!, in: "en-US")
     }
+    
+    
 }
 
 extension EditViewController : SpeakerDelegate {

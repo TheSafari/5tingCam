@@ -38,6 +38,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnH-Ug-mXM" userLabel="Shop">
                                 <rect key="frame" x="63" y="299" width="72" height="110"/>
                                 <state key="normal" image="Market"/>
+                                <connections>
+                                    <action selector="onShop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fOE-xB-WcK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhT-Do-bK0" userLabel="Settings">
                                 <rect key="frame" x="185" y="299" width="72" height="110"/>

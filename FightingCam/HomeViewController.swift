@@ -43,7 +43,6 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
 
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
-            //temp Test request API
         } else{
             print("Something went wrong")
         }
@@ -52,9 +51,6 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
         picker.dismiss(animated: true) {
             self.performSegue(withIdentifier: "gotoEditScreen", sender: self)
         }
-        
-        
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -74,7 +70,15 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     }
     
     @IBAction func onClickSetting(_ sender: UIButton) {
-       performSegue(withIdentifier: "gotoEditScreen", sender: self)
+        let alert = UIAlertController(title: "Settings", message: "Coming Soon", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func onShop(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Shopping", message: "Coming Soon", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
