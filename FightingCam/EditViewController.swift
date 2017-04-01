@@ -20,6 +20,7 @@ class EditViewController: UIViewController {
     var faces = [FaceInfo]()
     var quote : String?
     var faceUiImage: UIImage?
+    var imageSaved: UIImage? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +99,9 @@ class EditViewController: UIViewController {
     @IBAction func onDoneClick(_ sender: UIButton) {
         //saveImage()
         saveImage2()
+        let shareVc = self.storyboard?.instantiateViewController(withIdentifier: "shareViewController") as! ShareViewController
+        shareVc.imageSaved = self.imageSaved
+        self.present(shareVc, animated: true, completion: nil)
     }
     
     @IBAction func onFilter(_ sender: UIButton) {
@@ -155,7 +159,7 @@ class EditViewController: UIViewController {
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
+        self.imageSaved = newImage
         UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil)
         print("save done")
     }
