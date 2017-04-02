@@ -12,11 +12,11 @@ An iOS Swift application. 5ting Cam (5ting means fighting) with a mission to cre
 - [ ] Move, zoom in/zoom out, rotate face of animal
 - [ ] Change to another randomize animal face
 - [ ] Move quote position
-- [ ] Change quote color
 - [X] Save picture to photo album
-- [ ] Share to social networks: Facebook, Instagram, Twitter
+- [X] Share to social networks: Facebook, Twitter
 
 #### Optional
+- [ ] Change quote color
 - [ ] Custom image filter
 - [ ] Create gif file with emoticon animation
 - [ ] Download and shop more animal face

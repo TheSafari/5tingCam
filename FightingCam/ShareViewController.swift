@@ -39,9 +39,9 @@ class ShareViewController: UIViewController {
     @IBAction func onFbShare(_ sender: UIButton) {
         
         if let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) {
-            vc.setInitialText("5Ting Camp!")
+            vc.setInitialText("#5tingCam")
             vc.add(imageSaved!)
-            vc.add(URL(string: "ntkhoi.github.io"))
+//            vc.add(URL(string: "ntkhoi.github.io"))
             present(vc, animated: true)
         }
     }
@@ -50,8 +50,8 @@ class ShareViewController: UIViewController {
         
         let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
         vc?.add(imageSaved!)
-        vc?.add(URL(string: "ntkhoi.github.io"))
-        vc?.setInitialText("5Ting Camp")
+//        vc?.add(URL(string: "ntkhoi.github.io"))
+        vc?.setInitialText("#5tingCam")
         self.present(vc!, animated: true, completion: nil)
     }
     
