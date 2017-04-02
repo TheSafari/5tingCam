@@ -21,6 +21,7 @@ class EditViewController: UIViewController {
     var quote : String?
     var faceUiImage: UIImage?
     var imageSaved: UIImage? = nil
+    var emoticonName: String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +50,12 @@ class EditViewController: UIViewController {
                         let faceName = RealmService.shareInstance.getStickerbybyReactionType(reactionType: face.faceReactionType)?.stickerName
                         
                         self.faceUiImage = UIImage(named: faceName!)
-                        
+                        self.emoticonName = faceName
                         self.ivEmoticon.addEmoticionFace(face: face, imageFace: self.faceUiImage!)
                         self.faces.append(face)
-                        //get animal sound
                         
                         MBProgressHUD.hide(for: self.view, animated: true)
+                        self.textToSpeech()
                     }
                 })
             }
@@ -164,7 +165,7 @@ class EditViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil)
         print("save done")
     }
-
+    
     var bombSoundEffect: AVAudioPlayer!
     func playMusic(fullName: String){
         var component = fullName.components(separatedBy: ".")
@@ -249,17 +250,19 @@ class EditViewController: UIViewController {
         ivEmoticon.applyFilter4()
     }
     
-
+    
 }
 
 extension EditViewController : SpeakerDelegate {
     func startSpeaker() {
-        print("start speaker")
     }
     
     func stopSpeaker() {
-        print("stop speaker")
-        playMusic(fullName: "Audio2.wav")
+        if (emoticonName?.contains("Picture"))! {
+            let fileNumber = emoticonName?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+            playMusic(fullName: "Audio" + fileNumber! + ".wav")
+            
+        }
     }
 }
 
