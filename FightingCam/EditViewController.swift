@@ -13,17 +13,26 @@ import MBProgressHUD
 
 class EditViewController: UIViewController {
     
-    
+    @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var ivEmoticon: EmoticonImageView!
+    
+    let defaults = UserDefaults.standard
     
     var image: UIImage?
     var faces = [FaceInfo]()
     var faceUiImage: UIImage?
     var imageSaved: UIImage? = nil
     var emoticonName: String? = ""
+    var soundSetting = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let soundSettingPreference = defaults.dictionary(forKey: "soundSetting") as? Bool {
+            self.soundSetting = soundSettingPreference
+        }
+        
+        print("sound init \(soundSetting)")
+        self.updateSoundIcon()
         initFilterMenu()
         
         speaker = Speaker()
@@ -52,7 +61,9 @@ class EditViewController: UIViewController {
                         self.ivEmoticon.addQuote(quote: (quote?.quoteMessage)!)
                         
                         MBProgressHUD.hide(for: self.view, animated: true)
-                        self.textToSpeech()
+                        if !self.soundSetting {
+                            self.textToSpeech()
+                        }
                     }
                 })
             }
@@ -79,10 +90,6 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func onDoneButton(_ sender: UIBarButtonItem) {
-        print("click done")
-        //saveImage()
-        //saveImage2()
-        //playMusic()
         textToSpeech()
     }
     
@@ -91,9 +98,22 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func onSoundClick(_ sender: UIButton) {
-        print("click done")
-        //playMusic()
-        textToSpeech()
+        //mute/unmute
+        self.soundSetting = !self.soundSetting
+        self.updateSoundIcon()
+    }
+    
+    func updateSoundIcon(){
+        print("update sound setting \(soundSetting)")
+        if soundSetting {
+            soundButton.setImage(UIImage(named: "ic_sound"), for: UIControlState.normal)
+            speaker?.stop()
+        }
+        else {
+            soundButton.setImage(UIImage(named: "mute"), for: UIControlState.normal)
+            textToSpeech()
+        }
+        defaults.setValue(self.soundSetting, forKey: "soundSetting")
     }
     
     @IBAction func onDoneClick(_ sender: UIButton) {
@@ -101,6 +121,7 @@ class EditViewController: UIViewController {
         saveImage2()
         let shareVc = self.storyboard?.instantiateViewController(withIdentifier: "shareViewController") as! ShareViewController
         shareVc.imageSaved = self.imageSaved
+        shareVc.quoteText = self.quote
         self.present(shareVc, animated: true, completion: nil)
     }
     
@@ -108,6 +129,8 @@ class EditViewController: UIViewController {
         //open filter
     }
     
+    @IBAction func onRandomOther(_ sender: UIButton) {
+    }
     
     
     func saveImage(){
@@ -261,8 +284,9 @@ extension EditViewController : SpeakerDelegate {
     func stopSpeaker() {
         if (emoticonName?.contains("Picture"))! {
             let fileNumber = emoticonName?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
-            playMusic(fullName: "Audio" + fileNumber! + ".wav")
-            
+            if !soundSetting {
+                playMusic(fullName: "Audio" + fileNumber! + ".wav")
+            }
         }
     }
 }
