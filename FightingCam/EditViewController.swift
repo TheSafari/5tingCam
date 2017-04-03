@@ -123,12 +123,17 @@ class EditViewController: UIViewController {
         saveImage2()
         let shareVc = self.storyboard?.instantiateViewController(withIdentifier: "shareViewController") as! ShareViewController
         shareVc.imageSaved = self.imageSaved
+        shareVc.quoteText = self.quote
         self.present(shareVc, animated: true, completion: nil)
     }
     
     @IBAction func onFilter(_ sender: UIButton) {
         //open filter
     }
+    
+    @IBAction func onRandomOther(_ sender: UIButton) {
+    }
+    
     
     func saveImage(){
         let scale: CGFloat = 1
