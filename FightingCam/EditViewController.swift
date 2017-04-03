@@ -18,7 +18,6 @@ class EditViewController: UIViewController {
     
     var image: UIImage?
     var faces = [FaceInfo]()
-    var quote : String?
     var faceUiImage: UIImage?
     var imageSaved: UIImage? = nil
     var emoticonName: String? = ""
@@ -41,18 +40,16 @@ class EditViewController: UIViewController {
             for index in 0..<items.count{
                 FaceInfo.object(at: index, fromList: items, callback: { (face: FaceInfo, index: Int) in
                     DispatchQueue.main.async(){
-                        //get quotes
-                        let quote =  RealmService.shareInstance.getQuotebyReactionType(reactionType: face.faceReactionType)
-                        self.quote = quote?.quoteMessage
-                        print(self.quote!)
-                        self.ivEmoticon.addQuote(quote: self.quote!)
                         //get emoticon
                         let faceName = RealmService.shareInstance.getStickerbybyReactionType(reactionType: face.faceReactionType)?.stickerName
-                        
                         self.faceUiImage = UIImage(named: faceName!)
                         self.emoticonName = faceName
                         self.ivEmoticon.addEmoticionFace(face: face, imageFace: self.faceUiImage!)
                         self.faces.append(face)
+                        
+                        //get quotes
+                        let quote =  RealmService.shareInstance.getQuotebyReactionType(reactionType: face.faceReactionType)
+                        self.ivEmoticon.addQuote(quote: (quote?.quoteMessage)!)
                         
                         MBProgressHUD.hide(for: self.view, animated: true)
                         self.textToSpeech()
@@ -60,6 +57,7 @@ class EditViewController: UIViewController {
                 })
             }
         })
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -140,23 +138,25 @@ class EditViewController: UIViewController {
             
             
             let faceImage = self.faceUiImage
-            faceImage?.draw(in: CGRect(origin: emoticonPos, size: CGSize(width: w!, height: h!)))
+            let rotatedImage = faceImage?.rotated(by: Measurement(value: ivEmoticon.rotateValue, unit: .degrees))
+            //let rotatedImage = faceImage?.scale(scaleBy: ivEmoticon.pichValue)
+            let rect = CGRect(origin: emoticonPos, size: CGSize(width: (rotatedImage?.size.width)!, height: (rotatedImage?.size.height)!))
+            rotatedImage?.draw(in: rect)
             
         }
         
-        let quoteX = (bgImage?.size.width)! * 0.1
-        let quoteY = (bgImage?.size.height)! * 0.7
-        let lbl = UILabel(frame: CGRect(x: quoteX, y: quoteY, width: (bgImage?.size.width)! * 0.8, height: 100))
-        lbl.text = self.quote
+        //save quote
+        let quoteX = ivEmoticon.currentQuote?.x
+        let quoteY = ivEmoticon.currentQuote?.y
+        let lbl = UILabel(frame: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
         lbl.textAlignment = .center
-        lbl.text = quote
+        lbl.text = ivEmoticon.currentQuote?.quote
         lbl.numberOfLines = 0
         lbl.textColor = UIColor.white
         lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
         let fontSize = 20.0 / ivEmoticon.ratio!
         lbl.font = UIFont(name: "Yellowtail", size: fontSize)
-        //lbl.draw(CGRect(x: 50, y: 750, width: (bgImage?.size.width)! * 0.8, height: 100))
-        lbl.drawText(in: CGRect(x: quoteX, y: quoteY, width: (bgImage?.size.width)! * 0.8, height: 100))
+        lbl.drawText(in: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
         
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -186,7 +186,7 @@ class EditViewController: UIViewController {
     var speaker:Speaker?
     
     func textToSpeech(){
-        speaker?.speak(self.quote!, in: "en-US")
+        speaker?.speak((ivEmoticon.currentQuote?.quote)!, in: "en-US")
     }
     
     @IBOutlet weak var filerMenuView: UIView!
@@ -251,6 +251,7 @@ class EditViewController: UIViewController {
     }
     
     
+    
 }
 
 extension EditViewController : SpeakerDelegate {
@@ -264,6 +265,55 @@ extension EditViewController : SpeakerDelegate {
             
         }
     }
+}
+
+extension UIImage {
+    struct RotationOptions: OptionSet {
+        let rawValue: Int
+        
+        static let flipOnVerticalAxis = RotationOptions(rawValue: 1)
+        static let flipOnHorizontalAxis = RotationOptions(rawValue: 2)
+    }
+    
+    func rotated(by rotationAngle: Measurement<UnitAngle>, options: RotationOptions = []) -> UIImage? {
+        guard let cgImage = self.cgImage else { return nil }
+        
+        let rotationInRadians = CGFloat(rotationAngle.converted(to: .radians).value)
+        let transform = CGAffineTransform(rotationAngle: rotationInRadians)
+        var rect = CGRect(origin: .zero, size: self.size).applying(transform)
+        rect.origin = .zero
+        
+        let renderer = UIGraphicsImageRenderer(size: rect.size)
+        return renderer.image { renderContext in
+            renderContext.cgContext.translateBy(x: rect.midX, y: rect.midY)
+            renderContext.cgContext.rotate(by: rotationInRadians)
+            
+            let x = options.contains(.flipOnVerticalAxis) ? -1.0 : 1.0
+            let y = options.contains(.flipOnHorizontalAxis) ? 1.0 : -1.0
+            renderContext.cgContext.scaleBy(x: CGFloat(x), y: CGFloat(y))
+            
+            let drawRect = CGRect(origin: CGPoint(x: -self.size.width/2, y: -self.size.height/2), size: self.size)
+            renderContext.cgContext.draw(cgImage, in: drawRect)
+        }
+    }
+    
+    func scale(scaleBy scaleValue: CGFloat) -> UIImage? {
+        guard let cgImage = self.cgImage else { return nil }
+        
+    
+        let transform = CGAffineTransform(scaleX: scaleValue, y: scaleValue)
+        var rect = CGRect(origin: .zero, size: self.size).applying(transform)
+        rect.origin = .zero
+        
+        let renderer = UIGraphicsImageRenderer(size: rect.size)
+        return renderer.image { renderContext in
+            renderContext.cgContext.scaleBy(x: CGFloat(scaleValue), y: CGFloat(scaleValue))
+            
+            let drawRect = CGRect(origin: CGPoint(x: -self.size.width/2, y: -self.size.height/2), size: self.size)
+            renderContext.cgContext.draw(cgImage, in: drawRect)
+        }
+    }
+    
 }
 
 
