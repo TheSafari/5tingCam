@@ -85,9 +85,9 @@ class EmoticonImageView: UIView {
             imageView.addGestureRecognizer(rotate)
         
             // Do any additional setup after loading the view.
-            let pinch = UIPinchGestureRecognizer(target: self, action: #selector(EmoticonImageView.pinch(_:)))
-            pinch.delegate = self
-            imageView.addGestureRecognizer(pinch)
+            //let pinch = UIPinchGestureRecognizer(target: self, action: #selector(EmoticonImageView.pinch(_:)))
+            //pinch.delegate = self
+            //imageView.addGestureRecognizer(pinch)
         
             //set ratio cho imageView
             contentView.addSubview(imageView)
