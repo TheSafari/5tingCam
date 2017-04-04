@@ -34,7 +34,8 @@ class EditViewController: UIViewController {
         speaker = Speaker()
         speaker?.setMyDelegate(self)
         
-        ivEmoticon.image = image
+        //ivEmoticon.image = image
+        ivEmoticon.setImage(bgImage: image!)
         let imageData = UIImagePNGRepresentation(image!)
         
         MBProgressHUD.showAdded(to: self.view, animated: true)

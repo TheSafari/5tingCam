@@ -23,15 +23,7 @@ class EmoticonImageView: UIView {
     
     @IBOutlet weak var ivBackground: UIImageView!
     
-    var image: UIImage? {
-        get { return ivBackground.image}
-        set { ivBackground.image = newValue
-            print("frame width: \(contentView.frame.width) -- height \(contentView.frame.height)")
-            print("image width: \(ivBackground.image?.size.width) -- height \(ivBackground.image?.size.height)")
-            caculate()
-            applyFilter()
-        }
-    }
+    var image: UIImage?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -50,6 +42,15 @@ class EmoticonImageView: UIView {
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
+    }
+    
+    func setImage(bgImage: UIImage) {
+        self.image = bgImage
+        ivBackground.image = self.image
+        print("frame width: \(contentView.frame.width) -- height \(contentView.frame.height)")
+        print("image width: \(ivBackground.image?.size.width) -- height \(ivBackground.image?.size.height)")
+        caculate()
+        applyFilter()
     }
     
     var ratio: CGFloat?
@@ -183,10 +184,12 @@ class EmoticonImageView: UIView {
         let openGLContext = EAGLContext(api: .openGLES3)
         let context = CIContext(eaglContext: openGLContext!)
         
-        let coreImage = CIImage(cgImage: cgimg)
+        //let coreImage = CIImage(cgImage: cgimg)
+        let coreImage = CIImage(image: self.image!)
         
-        let filter = CIFilter(name: "CIPhotoEffectFade")
-        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+        let filter = CIFilter(name: "CIPhotoEffectChrome")
+        filter!.setDefaults()
+        filter!.setValue(coreImage, forKey: kCIInputImageKey)
         
         
         if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
@@ -206,11 +209,12 @@ class EmoticonImageView: UIView {
         let openGLContext = EAGLContext(api: .openGLES3)
         let context = CIContext(eaglContext: openGLContext!)
         
-        let coreImage = CIImage(cgImage: cgimg)
+        //let coreImage = CIImage(cgImage: cgimg)
+        let coreImage = CIImage(image: self.image!)
         
-        let filter = CIFilter(name: "CISepiaTone")
-        filter?.setValue(coreImage, forKey: kCIInputImageKey)
-        filter?.setValue(1, forKey: kCIInputIntensityKey)
+        let filter = CIFilter(name: "CIPhotoEffectFade")
+        filter!.setDefaults()
+        filter!.setValue(coreImage, forKey: kCIInputImageKey)
         
         
         if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
@@ -230,12 +234,13 @@ class EmoticonImageView: UIView {
         let openGLContext = EAGLContext(api: .openGLES3)
         let context = CIContext(eaglContext: openGLContext!)
         
-        let coreImage = CIImage(cgImage: cgimg)
+        //let coreImage = CIImage(cgImage: cgimg)
+        let coreImage = CIImage(image: self.image!)
         
         
-        let filter = CIFilter(name: "CIVignette")
-        filter?.setValue(coreImage, forKey: kCIInputImageKey)
-        filter?.setValue(1, forKey: kCIInputIntensityKey)
+        let filter = CIFilter(name: "CIPhotoEffectInstant")
+        filter!.setDefaults()
+        filter!.setValue(coreImage, forKey: kCIInputImageKey)
         
         if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
             let cgimgresult = context.createCGImage(output, from: output.extent)
@@ -254,16 +259,18 @@ class EmoticonImageView: UIView {
         let openGLContext = EAGLContext(api: .openGLES3)
         let context = CIContext(eaglContext: openGLContext!)
         
-        let coreImage = CIImage(cgImage: cgimg)
+        //let coreImage = CIImage(cgImage: cgimg)
+        let coreImage = CIImage(image: self.image!)
         
-        let filter = CIFilter(name: "CIPhotoEffectTransfer")
-        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+        
+        let filter = CIFilter(name: "CIPhotoEffectNoir")
+        filter!.setDefaults()
+        filter!.setValue(coreImage, forKey: kCIInputImageKey)
         
         
         if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
             let cgimgresult = context.createCGImage(output, from: output.extent)
-            let result = UIImage(cgImage: cgimgresult!)
-            ivBackground?.image = result
+            ivBackground?.image = UIImage(cgImage: cgimgresult!)
         }
     }
 }
