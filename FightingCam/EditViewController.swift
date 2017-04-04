@@ -329,6 +329,7 @@ extension UIImage {
         var rect = CGRect(origin: .zero, size: self.size).applying(transform)
         rect.origin = .zero
         
+        
         let renderer = UIGraphicsImageRenderer(size: rect.size)
         return renderer.image { renderContext in
             renderContext.cgContext.scaleBy(x: CGFloat(scaleValue), y: CGFloat(scaleValue))
