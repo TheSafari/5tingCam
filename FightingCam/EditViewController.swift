@@ -23,15 +23,11 @@ class EditViewController: UIViewController {
     var faceUiImage: UIImage?
     var imageSaved: UIImage? = nil
     var emoticonName: String? = ""
-    var soundSetting = false
+    var soundSetting = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let soundSettingPreference = defaults.dictionary(forKey: "soundSetting") as? Bool {
-            self.soundSetting = soundSettingPreference
-        }
-        
-        print("sound init \(soundSetting)")
+        self.soundSetting = defaults.bool(forKey: "soundSetting")
         self.updateSoundIcon()
         initFilterMenu()
         
@@ -68,7 +64,7 @@ class EditViewController: UIViewController {
                 })
             }
         })
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,10 +97,10 @@ class EditViewController: UIViewController {
         //mute/unmute
         self.soundSetting = !self.soundSetting
         self.updateSoundIcon()
+        defaults.setValue(self.soundSetting, forKey: "soundSetting")
     }
     
     func updateSoundIcon(){
-        print("update sound setting \(soundSetting)")
         if soundSetting {
             soundButton.setImage(UIImage(named: "ic_sound"), for: UIControlState.normal)
             speaker?.stop()
@@ -113,7 +109,6 @@ class EditViewController: UIViewController {
             soundButton.setImage(UIImage(named: "mute"), for: UIControlState.normal)
             textToSpeech()
         }
-        defaults.setValue(self.soundSetting, forKey: "soundSetting")
     }
     
     @IBAction func onDoneClick(_ sender: UIButton) {
@@ -324,7 +319,7 @@ extension UIImage {
     func scale(scaleBy scaleValue: CGFloat) -> UIImage? {
         guard let cgImage = self.cgImage else { return nil }
         
-    
+        
         let transform = CGAffineTransform(scaleX: scaleValue, y: scaleValue)
         var rect = CGRect(origin: .zero, size: self.size).applying(transform)
         rect.origin = .zero
