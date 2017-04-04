@@ -32,4 +32,6 @@ You can also try on browsers: https://invis.io/VAAV8ANFU
 
 Libraries we are using:
 - Microsoft Cognitive Services
-- AFNetworking
+- Realm
+- AVFoundation
+- Social
