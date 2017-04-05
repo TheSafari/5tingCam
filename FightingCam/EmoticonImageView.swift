@@ -10,21 +10,21 @@ import UIKit
 import AVFoundation
 
 class EmoticonImageView: UIView {
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var ivBackground: UIImageView!
     
     var image: UIImage?
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubviews()
@@ -68,30 +68,32 @@ class EmoticonImageView: UIView {
     
     
     
-    func addEmoticionFace(face: FaceInfo, imageFace: UIImage){        
-            let imageView = UIImageView(image: imageFace)
-            //create image view with (x,y) and (width, height)
-            let x = self.offsetX! + CGFloat(face.faceRectangle.left) * ratio!
-            let y = self.offsetY! + CGFloat(face.faceRectangle.top) * ratio!
-            let width = CGFloat(face.faceRectangle.Width) * ratio!
-            let height = CGFloat(face.faceRectangle.height) * ratio!
-            print("x \(x) - y: \(y) - widht: \(width) - height: \(height)")
-            imageView.frame = CGRect(x: x, y: y, width: width, height: height)
-            imageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
-            imageView.clipsToBounds = true
-            imageView.isUserInteractionEnabled = true
+    func addEmoticionFace(face: FaceInfo, imageFace: UIImage){
         
-            let rotate = UIRotationGestureRecognizer(target: self, action: #selector(EmoticonImageView.onRotateGesture(_:)))
-            rotate.delegate = self
-            imageView.addGestureRecognizer(rotate)
+        let imageView = UIImageView(image: imageFace)
+        self.contentView.willRemoveSubview(imageView)
+        //create image view with (x,y) and (width, height)
+        let x = self.offsetX! + CGFloat(face.faceRectangle.left) * ratio!
+        let y = self.offsetY! + CGFloat(face.faceRectangle.top) * ratio!
+        let width = CGFloat(face.faceRectangle.Width) * ratio!
+        let height = CGFloat(face.faceRectangle.height) * ratio!
+        print("x \(x) - y: \(y) - widht: \(width) - height: \(height)")
+        imageView.frame = CGRect(x: x, y: y, width: width, height: height)
+        imageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
         
-            // Do any additional setup after loading the view.
-            //let pinch = UIPinchGestureRecognizer(target: self, action: #selector(EmoticonImageView.pinch(_:)))
-            //pinch.delegate = self
-            //imageView.addGestureRecognizer(pinch)
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(EmoticonImageView.onRotateGesture(_:)))
+        rotate.delegate = self
+        imageView.addGestureRecognizer(rotate)
         
-            //set ratio cho imageView
-            contentView.addSubview(imageView)
+        // Do any additional setup after loading the view.
+        //let pinch = UIPinchGestureRecognizer(target: self, action: #selector(EmoticonImageView.pinch(_:)))
+        //pinch.delegate = self
+        //imageView.addGestureRecognizer(pinch)
+        
+        //set ratio cho imageView
+        contentView.addSubview(imageView)
     }
     
     var currentQuote: OriginalQuote?
@@ -113,11 +115,11 @@ class EmoticonImageView: UIView {
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = UIFont(name: "Yellowtail", size: 20.0)
         label.isUserInteractionEnabled = true
-    
+        
         //add pan gesture for quote
         let pan = UIPanGestureRecognizer(target: self, action: #selector(EmoticonImageView.onQuotePanGesture(_:)))
         label.addGestureRecognizer(pan)
-        
+        contentView.willRemoveSubview(label)
         contentView.addSubview(label)
     }
     

@@ -344,6 +344,7 @@
                         <outlet property="btnFilter2" destination="XbN-NI-Fo4" id="h2C-5I-6mc"/>
                         <outlet property="btnFilter3" destination="HUI-a9-y0e" id="iLc-v0-kRA"/>
                         <outlet property="btnFilter4" destination="sFG-yP-1fQ" id="C8y-k4-RUO"/>
+                        <outlet property="contentView" destination="aVA-Od-NtA" id="0B4-eZ-9r7"/>
                         <outlet property="darkFillView" destination="f48-oz-eyl" id="0Pc-1C-L7E"/>
                         <outlet property="filerMenuView" destination="GK2-PO-oEo" id="qoc-TP-qkB"/>
                         <outlet property="ivEmoticon" destination="j93-Xg-kOO" id="eZT-yR-8TS"/>
@@ -366,7 +367,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s28-9L-aqO">
+                            <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="s28-9L-aqO">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Share" id="2mD-Bi-uOU">
@@ -383,7 +384,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m08-Vk-ncB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m08-Vk-ncB">
                                 <rect key="frame" x="0.0" y="64" width="320" height="419"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ud1-vo-kUJ" userLabel="Vertical View">

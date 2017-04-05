@@ -13,6 +13,7 @@ import MBProgressHUD
 
 class EditViewController: UIViewController {
     
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var ivEmoticon: EmoticonImageView!
     
@@ -24,6 +25,7 @@ class EditViewController: UIViewController {
     var imageSaved: UIImage? = nil
     var emoticonName: String? = ""
     var soundSetting = true
+    var apiResult: [[String: AnyObject]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +38,28 @@ class EditViewController: UIViewController {
         
         //ivEmoticon.image = image
         ivEmoticon.setImage(bgImage: image!)
+        
+        
+        
         let imageData = UIImagePNGRepresentation(image!)
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
         DataManager.shareInstance.fetchFaceInfoFromUrl(data: imageData!, completion: { (items) -> (Void) in
             // Handle after fetch to api success
+            self.apiResult = items
             print("Fetch Success Item = : \(items) ")
+            if items.count == 0 {
+                DispatchQueue.main.async(){
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+                print("No face detected")
+                let alert = UIAlertController(title: "Face not found", message: "No face detected. Please try another picture!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+
+                return
+            }
             for index in 0..<items.count{
                 FaceInfo.object(at: index, fromList: items, callback: { (face: FaceInfo, index: Int) in
                     DispatchQueue.main.async(){
@@ -64,6 +81,14 @@ class EditViewController: UIViewController {
                     }
                 })
             }
+        }, failure: { (errorMessage) in
+            print("errorMessage : \(errorMessage)")
+             DispatchQueue.main.async(){
+            MBProgressHUD.hide(for: self.view, animated: true)
+            }
+            let alert = UIAlertController(title: "Face not found", message: "No face detected. Please try another picture!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         })
         
     }
@@ -126,6 +151,26 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func onRandomOther(_ sender: UIButton) {
+        for index in 0..<self.apiResult.count{
+            FaceInfo.object(at: index, fromList: self.apiResult , callback: { (face: FaceInfo, index: Int) in
+                DispatchQueue.main.async(){
+                    //get emoticon
+                    let faceName = RealmService.shareInstance.getStickerbybyReactionType(reactionType: face.faceReactionType)?.stickerName
+                    self.faceUiImage = UIImage(named: faceName!)
+                    self.emoticonName = faceName
+                    self.ivEmoticon.addEmoticionFace(face: face, imageFace: self.faceUiImage!)
+                    self.faces.append(face)
+                    
+                    //get quotes
+                    let quote =  RealmService.shareInstance.getQuotebyReactionType(reactionType: face.faceReactionType)
+                    self.ivEmoticon.addQuote(quote: (quote?.quoteMessage)!)
+                    
+                    if !self.soundSetting {
+                        self.textToSpeech()
+                    }
+                }
+            })
+        }
     }
     
     
@@ -165,18 +210,20 @@ class EditViewController: UIViewController {
         }
         
         //save quote
-        let quoteX = ivEmoticon.currentQuote?.x
-        let quoteY = ivEmoticon.currentQuote?.y
-        let lbl = UILabel(frame: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
-        lbl.textAlignment = .center
-        lbl.text = ivEmoticon.currentQuote?.quote
-        lbl.numberOfLines = 0
-        lbl.textColor = UIColor.white
-        lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
-        let fontSize = 20.0 / ivEmoticon.ratio!
-        lbl.font = UIFont(name: "Yellowtail", size: fontSize)
-        lbl.drawText(in: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
-        
+        if let currentQuote = ivEmoticon.currentQuote{
+            let quoteX = currentQuote.x
+            let quoteY = currentQuote.y
+            
+            let lbl = UILabel(frame: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
+            lbl.textAlignment = .center
+            lbl.text = currentQuote.quote
+            lbl.numberOfLines = 0
+            lbl.textColor = UIColor.white
+            lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
+            let fontSize = 20.0 / ivEmoticon.ratio!
+            lbl.font = UIFont(name: "Yellowtail", size: fontSize)
+            lbl.drawText(in: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
+        }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()

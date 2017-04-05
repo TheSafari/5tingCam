@@ -43,6 +43,12 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
 
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
+            
+            let size = image.size
+            if size.width > 600 || size.height > 600{
+            selectedImage = resizeImage(image: selectedImage!, targetSize: CGSize(width: 600, height:
+                600))
+            }
         } else{
             print("Something went wrong")
         }

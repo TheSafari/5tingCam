@@ -18,20 +18,20 @@ class DataManager{
     
     static let shareInstance = DataManager()
     
-
     
-    func fetchFaceInfoFromUrl(data: Data, completion: @escaping ([[String : AnyObject]]) -> (Void)){
+    
+    func fetchFaceInfoFromUrl(data: Data, completion: @escaping ([[String : AnyObject]]) -> (Void) , failure: @escaping(String) -> (Void)){
         
         let headers = [
             "ocp-apim-subscription-key": "d1585b6996744cc1ba37bed121948051",
             "content-type": "application/octet-stream",
             "cache-control": "no-cache"
-            ]
-    
+        ]
+        
         let postData = data
         let request = NSMutableURLRequest(url: NSURL(string: baseUrl.appending("/emotion/v1.0/recognize"))! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10)
+                                          timeoutInterval: 7)
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
         request.httpBody = postData
@@ -39,6 +39,10 @@ class DataManager{
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest,
                                         completionHandler: { (dataOrNil, response, error) in
+                                            if  error != nil{
+                                                failure((error?.localizedDescription)!)
+                                                return
+                                            }
                                             if let data = dataOrNil {
                                                 if let responseDictionary = try! JSONSerialization.jsonObject(
                                                     with: data, options:[]) as? [[String : AnyObject]] {
@@ -48,10 +52,12 @@ class DataManager{
                                                     
                                                     
                                                 }
-                                            }                                            
+                                                return
+                                            }
+                                            failure("Parse Json failure")
         })
         dataTask.resume()
     }
-
- 
+    
+    
 }

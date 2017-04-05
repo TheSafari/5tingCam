@@ -10,6 +10,8 @@ import Foundation
 import Realm
 import RealmSwift
 
+import UIKit
+
 func incrementQuoteID(quote: Quote) -> Quote {
     let realm = try! Realm()
     let increatedID = (realm.objects(Quote.self).max(ofProperty: "id") as Int? ?? 0) + 1
@@ -52,4 +54,32 @@ func random(from range: ClosedRange<Int>) -> Int {
     let lowerBound = range.lowerBound
     let upperBound = range.upperBound
     return lowerBound + Int(arc4random_uniform(UInt32(upperBound - lowerBound + 1)))
+}
+
+
+
+func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+    let size = image.size
+    
+    let widthRatio  = targetSize.width  / image.size.width
+    let heightRatio = targetSize.height / image.size.height
+    
+    // Figure out what our orientation is, and use that to form the rectangle
+    var newSize: CGSize
+    if(widthRatio > heightRatio) {
+        newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+    } else {
+        newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+    }
+    
+    // This is the rect that we've calculated out and this is what is actually used below
+    let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+    
+    // Actually do the resizing to the rect using the ImageContext stuff
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+    image.draw(in: rect)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
 }
