@@ -66,12 +66,8 @@ class EmoticonImageView: UIView {
         offsetY = imageRect?.origin.y
     }
     
-    
-    
     func addEmoticionFace(face: FaceInfo, imageFace: UIImage){
-        
         let imageView = UIImageView(image: imageFace)
-        self.contentView.willRemoveSubview(imageView)
         //create image view with (x,y) and (width, height)
         let x = self.offsetX! + CGFloat(face.faceRectangle.left) * ratio!
         let y = self.offsetY! + CGFloat(face.faceRectangle.top) * ratio!
@@ -82,7 +78,7 @@ class EmoticonImageView: UIView {
         imageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
-        
+        imageView.tag = 100001
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(EmoticonImageView.onRotateGesture(_:)))
         rotate.delegate = self
         imageView.addGestureRecognizer(rotate)
@@ -93,12 +89,20 @@ class EmoticonImageView: UIView {
         //imageView.addGestureRecognizer(pinch)
         
         //set ratio cho imageView
-        contentView.addSubview(imageView)
+        
+        for subview in contentView.subviews {
+            if (subview.tag == 100001) {
+                print(subview)
+                subview.removeFromSuperview()
+            }
+        }
+        contentView.insertSubview(imageView, at: 1)
     }
     
     var currentQuote: OriginalQuote?
     
     func addQuote(quote: String){
+        
         //create original position of quote
         let x = (imageRect?.origin.x)! + (imageRect?.size.width)! * 0.1
         let y = (imageRect?.origin.y)! + (imageRect?.size.height)! * 0.7
@@ -115,12 +119,19 @@ class EmoticonImageView: UIView {
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = UIFont(name: "Yellowtail", size: 20.0)
         label.isUserInteractionEnabled = true
-        
+        label.tag = 100000
         //add pan gesture for quote
         let pan = UIPanGestureRecognizer(target: self, action: #selector(EmoticonImageView.onQuotePanGesture(_:)))
         label.addGestureRecognizer(pan)
-        contentView.willRemoveSubview(label)
-        contentView.addSubview(label)
+        
+        for subview in contentView.subviews {
+            if (subview.tag == 100000) {
+                print(subview)
+                subview.removeFromSuperview()
+            }
+        }
+        
+        contentView.insertSubview(label, at: 1)
     }
     
     //==================
