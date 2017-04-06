@@ -33,6 +33,7 @@ class EmoticonImageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        print(">>>>>> frame width: \(frame.width) -- height \(frame.height)")
         initSubviews()
     }
     
@@ -48,7 +49,7 @@ class EmoticonImageView: UIView {
         self.image = bgImage
         ivBackground.image = self.image
         print("frame width: \(contentView.frame.width) -- height \(contentView.frame.height)")
-        print("image width: \(ivBackground.image?.size.width) -- height \(ivBackground.image?.size.height)")
+        print("image width: \(String(describing: ivBackground.image?.size.width)) -- height \(String(describing: ivBackground.image?.size.height))")
         caculate()
     }
     
@@ -67,6 +68,7 @@ class EmoticonImageView: UIView {
     
     func addEmoticionFace(face: FaceInfo, imageFace: UIImage){
         let imageView = UIImageView(image: imageFace)
+        
         //create image view with (x,y) and (width, height)
         let x = self.offsetX! + CGFloat(face.faceRectangle.left) * ratio!
         let y = self.offsetY! + CGFloat(face.faceRectangle.top) * ratio!

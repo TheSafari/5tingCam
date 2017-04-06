@@ -314,7 +314,7 @@
 				TargetAttributes = {
 					20A9A53F1E7964E200A62A44 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 87E55Q9ME9;
+						DevelopmentTeam = XKS9DFKN47;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -555,7 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FightingCam/FightingCam.entitlements;
-				DEVELOPMENT_TEAM = 87E55Q9ME9;
+				DEVELOPMENT_TEAM = XKS9DFKN47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -575,7 +575,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FightingCam/FightingCam.entitlements;
-				DEVELOPMENT_TEAM = 87E55Q9ME9;
+				DEVELOPMENT_TEAM = XKS9DFKN47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

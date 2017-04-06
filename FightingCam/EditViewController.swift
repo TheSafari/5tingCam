@@ -313,19 +313,23 @@ class EditViewController: UIViewController {
     
     @IBAction func onClickBtn1(_ sender: UIButton) {
         ivEmoticon.applyFilter()
+        selectedIndex = 0
     }
     
     
     @IBAction func onClickBtn2(_ sender: UIButton) {
         ivEmoticon.applyFilter2()
+        selectedIndex = 1
     }
     
     @IBAction func onClickButton3(_ sender: UIButton) {
         ivEmoticon.applyFilter3()
+        selectedIndex = 2
     }
     
     @IBAction func onClickBtn4(_ sender: UIButton) {
         ivEmoticon.applyFilter4()
+        selectedIndex = 3
     }
     
     var CIFilterNames = [
