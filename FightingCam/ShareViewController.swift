@@ -41,7 +41,7 @@ class ShareViewController: UIViewController {
     @IBAction func onFbShare(_ sender: UIButton) {
         
         if let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) {
-            vc.setInitialText((quoteText != nil) ? quoteText! : "" + "\n#5tingCam")
+            vc.setInitialText((quoteText != nil) ? quoteText! + "\n#5tingCam" : "" + "\n#5tingCam")
             vc.add(imageSaved!)
             present(vc, animated: true)
         }
@@ -51,7 +51,7 @@ class ShareViewController: UIViewController {
         
         let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
         vc?.add(imageSaved!)
-        vc?.setInitialText((quoteText != nil) ? quoteText! : ""  + "\n#5tingCam")
+        vc?.setInitialText((quoteText != nil) ? quoteText! + "\n#5tingCam" : ""  + "\n#5tingCam")
         self.present(vc!, animated: true, completion: nil)
     }
     
