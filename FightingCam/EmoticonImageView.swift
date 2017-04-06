@@ -41,9 +41,9 @@ class EmoticonImageView: UIView {
         //standard initialization logic
         let nib = UINib(nibName: "EmoticonImageView", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
-        frame = contentView.frame
-        bounds = contentView.bounds
-        print(">>>>>> frame width: \(contentView.frame.width) -- height \(contentView.frame.height)")
+        //frame = contentView.frame
+        //bounds = contentView.bounds
+        print(">>>>>> frame width: \(ivBackground.frame.width) -- height \(ivBackground.frame.height)")
         contentView.frame = bounds
         addSubview(contentView)
     }
