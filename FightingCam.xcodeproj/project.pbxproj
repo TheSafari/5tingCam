@@ -15,6 +15,10 @@
 		203137301E87C0C2000CDFD4 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031372F1E87C0C2000CDFD4 /* GlobalFunction.swift */; };
 		20382AEF1E955B160000B48A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20382AED1E955B160000B48A /* Realm.framework */; };
 		20382AF01E955B160000B48A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20382AEE1E955B160000B48A /* RealmSwift.framework */; };
+		20382AF11E95F7AD0000B48A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20382AED1E955B160000B48A /* Realm.framework */; };
+		20382AF21E95F7AD0000B48A /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20382AED1E955B160000B48A /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20382AF31E95F7AD0000B48A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20382AEE1E955B160000B48A /* RealmSwift.framework */; };
+		20382AF41E95F7AD0000B48A /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20382AEE1E955B160000B48A /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20A9A5441E7964E200A62A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5431E7964E200A62A44 /* AppDelegate.swift */; };
 		20A9A54B1E7964E200A62A44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20A9A54A1E7964E200A62A44 /* Assets.xcassets */; };
 		20A9A54E1E7964E200A62A44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A9A54C1E7964E200A62A44 /* LaunchScreen.storyboard */; };
@@ -53,6 +57,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				20382AF41E95F7AD0000B48A /* RealmSwift.framework in Embed Frameworks */,
+				20382AF21E95F7AD0000B48A /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20382AF11E95F7AD0000B48A /* Realm.framework in Frameworks */,
+				20382AF31E95F7AD0000B48A /* RealmSwift.framework in Frameworks */,
 				20382AEF1E955B160000B48A /* Realm.framework in Frameworks */,
 				2891532F7BDD2F4B059F5BA1 /* Pods_FightingCam.framework in Frameworks */,
 				20382AF01E955B160000B48A /* RealmSwift.framework in Frameworks */,
@@ -488,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -532,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -555,7 +563,7 @@
 				INFOPLIST_FILE = FightingCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.thesafari.FightingCam.2017;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thesafari.FightingCam.20;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -575,7 +583,7 @@
 				INFOPLIST_FILE = FightingCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.thesafari.FightingCam.2017;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thesafari.FightingCam.20;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
