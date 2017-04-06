@@ -95,7 +95,7 @@ class EmoticonImageView: UIView {
                 subview.removeFromSuperview()
             }
         }
-        contentView.insertSubview(imageView, at: 1)
+        contentView.addSubview(imageView)
     }
     
     var currentQuote: OriginalQuote?
@@ -130,7 +130,7 @@ class EmoticonImageView: UIView {
             }
         }
         
-        contentView.insertSubview(label, at: 1)
+        contentView.addSubview(label)
     }
     
     //==================
