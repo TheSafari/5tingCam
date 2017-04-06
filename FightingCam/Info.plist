@@ -2,30 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleURLTypes</key>
-<array>
-    <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-            <string>fb$210226842796594</string>
-        </array>
-    </dict>
-</array>
-	<key>FacebookDisplayName</key>
-	<string>5ting Cam</string>
-	<key>FacebookAppID</key>
-	<string>210226842796594</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fbauth2</string>
-		<string>fbapi</string>
-		<string>fbshareextension</string>
-		<string>fb-messenger-api</string>
-	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>This lets you take a photo from your camera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This lets you pick an image from your photo library</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -42,10 +18,33 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict/>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
+	<key>FacebookAppID</key>
+	<string>210226842796594</string>
+	<key>FacebookDisplayName</key>
+	<string>5ting Cam</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth2</string>
+		<string>fbapi</string>
+		<string>fbshareextension</string>
+		<string>fb-messenger-api</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This lets you take a photo from your camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This lets you pick an image from your photo library</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Yellowtail-Regular.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -66,10 +65,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Yellowtail-Regular.ttf</string>
 	</array>
 </dict>
 </plist>
