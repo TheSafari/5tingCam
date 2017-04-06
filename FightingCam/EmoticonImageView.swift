@@ -33,14 +33,17 @@ class EmoticonImageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print(">>>>>> frame width: \(frame.width) -- height \(frame.height)")
         initSubviews()
     }
     
     func initSubviews(){
+        print(">>>>>> frame width: \(frame.width) -- height \(frame.height)")
         //standard initialization logic
         let nib = UINib(nibName: "EmoticonImageView", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
+        frame = contentView.frame
+        bounds = contentView.bounds
+        print(">>>>>> frame width: \(contentView.frame.width) -- height \(contentView.frame.height)")
         contentView.frame = bounds
         addSubview(contentView)
     }
