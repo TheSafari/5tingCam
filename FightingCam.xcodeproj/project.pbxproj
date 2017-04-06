@@ -29,6 +29,8 @@
 		20F8DBCE1E8BE2CB00F182C3 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F8DBCD1E8BE2CB00F182C3 /* Sticker.swift */; };
 		2891532F7BDD2F4B059F5BA1 /* Pods_FightingCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B11B96EC5D01D093E9DE1C3 /* Pods_FightingCam.framework */; };
 		C9321D011E92972C002DB30D /* OriginalQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9321D001E92972C002DB30D /* OriginalQuote.swift */; };
+		C932F71F1E9646BE00D78AEE /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C932F71E1E9646BE00D78AEE /* Lato-Regular.ttf */; };
+		C932F7211E9646CF00D78AEE /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C932F7201E9646CF00D78AEE /* Roboto-Bold.ttf */; };
 		C973FFFF1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C973FFFE1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf */; };
 		C99795451E88352E003D6BB4 /* EmoticonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99795431E88352E003D6BB4 /* EmoticonImageView.swift */; };
 		C99795461E88352E003D6BB4 /* EmoticonImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99795441E88352E003D6BB4 /* EmoticonImageView.xib */; };
@@ -88,6 +90,8 @@
 		8B11B96EC5D01D093E9DE1C3 /* Pods_FightingCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FightingCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD7AF3FB111309F097B4FBF /* Pods-FightingCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FightingCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-FightingCam/Pods-FightingCam.release.xcconfig"; sourceTree = "<group>"; };
 		C9321D001E92972C002DB30D /* OriginalQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginalQuote.swift; sourceTree = "<group>"; };
+		C932F71E1E9646BE00D78AEE /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		C932F7201E9646CF00D78AEE /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		C973FFFE1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yellowtail-Regular.ttf"; sourceTree = "<group>"; };
 		C99795431E88352E003D6BB4 /* EmoticonImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonImageView.swift; sourceTree = "<group>"; };
 		C99795441E88352E003D6BB4 /* EmoticonImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmoticonImageView.xib; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 		C973FFF91E8EC29B003FFD28 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C932F7201E9646CF00D78AEE /* Roboto-Bold.ttf */,
+				C932F71E1E9646BE00D78AEE /* Lato-Regular.ttf */,
 				C973FFFE1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf */,
 			);
 			name = Fonts;
@@ -354,12 +360,14 @@
 				C9B75BCD1E8C2CF80077AF76 /* Audio1.wav in Resources */,
 				C9B75BD41E8C2CF80077AF76 /* Audio8.wav in Resources */,
 				C9B75BCF1E8C2CF80077AF76 /* Audio3.wav in Resources */,
+				C932F71F1E9646BE00D78AEE /* Lato-Regular.ttf in Resources */,
 				C9B75BD61E8C2CF80077AF76 /* Audio10.wav in Resources */,
 				C99795461E88352E003D6BB4 /* EmoticonImageView.xib in Resources */,
 				C9B75BD91E8C2CF80077AF76 /* Audio13.wav in Resources */,
 				C9B75BD51E8C2CF80077AF76 /* Audio9.wav in Resources */,
 				20DE16FB1E8F74B9002F6494 /* default.realm in Resources */,
 				C9B75BD31E8C2CF80077AF76 /* Audio7.wav in Resources */,
+				C932F7211E9646CF00D78AEE /* Roboto-Bold.ttf in Resources */,
 				C9B75BD71E8C2CF80077AF76 /* Audio11.wav in Resources */,
 				20A9A54B1E7964E200A62A44 /* Assets.xcassets in Resources */,
 				C973FFFF1E8EC5E6003FFD28 /* Yellowtail-Regular.ttf in Resources */,
