@@ -10,6 +10,11 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Yellowtail-Regular.ttf">
+            <string>Yellowtail</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -68,12 +73,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_background" translatesAutoresizingMaskIntoConstraints="NO" id="k0q-3e-cEb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="244"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5ting Cam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xn3-gg-Ij2">
-                                <rect key="frame" x="93" y="40" width="134" height="46"/>
-                                <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="28"/>
-                                <color key="textColor" red="0.14901960784313725" green="0.55686274509803924" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLD-8X-3yo">
                                 <rect key="frame" x="69" y="506" width="40" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -98,6 +97,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5ting Cam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xn3-gg-Ij2">
+                                <rect key="frame" x="51" y="99" width="225" height="81.5"/>
+                                <fontDescription key="fontDescription" name="Yellowtail" family="Yellowtail" pointSize="64"/>
+                                <color key="textColor" red="0.14901960784313725" green="0.55686274509803924" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94915453251812776" green="0.95855210214702002" blue="0.95855210214702002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -110,7 +115,7 @@
                             <constraint firstItem="k0q-3e-cEb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8UJ-Uh-av5"/>
                             <constraint firstItem="EnH-Ug-mXM" firstAttribute="top" secondItem="ZK9-in-gJN" secondAttribute="bottom" constant="16" id="9iU-Yo-MQb"/>
                             <constraint firstItem="bLD-8X-3yo" firstAttribute="centerX" secondItem="EnH-Ug-mXM" secondAttribute="centerX" id="Ax8-uK-1Hi"/>
-                            <constraint firstItem="xn3-gg-Ij2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="BCO-Oi-Lk0"/>
+                            <constraint firstItem="xn3-gg-Ij2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="59" id="BCO-Oi-Lk0"/>
                             <constraint firstItem="Tqz-WC-ELU" firstAttribute="centerX" secondItem="mko-8z-5y7" secondAttribute="centerX" id="BK8-60-NN5"/>
                             <constraint firstItem="xhT-Do-bK0" firstAttribute="leading" secondItem="lcn-hy-bZl" secondAttribute="trailing" constant="30" id="BhI-yB-9TY"/>
                             <constraint firstItem="lcn-hy-bZl" firstAttribute="leading" secondItem="EnH-Ug-mXM" secondAttribute="trailing" constant="30" id="Cfu-Yq-3z3"/>
