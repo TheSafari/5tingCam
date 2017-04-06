@@ -186,7 +186,10 @@ class EditViewController: UIViewController {
     }
     
     func saveImage2(){
-        let bgImage = ivEmoticon.image
+        var bgImage = ivEmoticon.image
+        if (selectedIndex > -1) {
+            bgImage = createFilteredImage(selectedIndex)
+        }
         print("width: \(bgImage?.size.width)")
         print("height: \(bgImage?.size.height)")
         
@@ -204,7 +207,7 @@ class EditViewController: UIViewController {
             let faceImage = self.faceUiImage
             let rotatedImage = faceImage?.rotated(by: Measurement(value: ivEmoticon.rotateValue, unit: .degrees))
             //let rotatedImage = faceImage?.scale(scaleBy: ivEmoticon.pichValue)
-            let rect = CGRect(origin: emoticonPos, size: CGSize(width: (rotatedImage?.size.width)!, height: (rotatedImage?.size.height)!))
+            let rect = CGRect(origin: emoticonPos, size: CGSize(width: (w)!, height: (h)!))
             rotatedImage?.draw(in: rect)
             
         }
@@ -257,16 +260,24 @@ class EditViewController: UIViewController {
     
     @IBOutlet weak var filerMenuView: UIView!
     @IBOutlet weak var darkFillView: UIViewX!
+    
     @IBOutlet weak var btnFilter1: UIButton!
     @IBOutlet weak var btnFilter2: UIButton!
     @IBOutlet weak var btnFilter3: UIButton!
     @IBOutlet weak var btnFilter4: UIButton!
+    var selectedIndex = -1
+
     
     func initFilterMenu(){
         btnFilter1.alpha = 0
         btnFilter2.alpha = 0
         btnFilter3.alpha = 0
         btnFilter4.alpha = 0
+        
+        btnFilter1.setBackgroundImage(createFilteredImage(0), for: .normal)
+        btnFilter2.setBackgroundImage(createFilteredImage(1), for: .normal)
+        btnFilter3.setBackgroundImage(createFilteredImage(2), for: .normal)
+        btnFilter4.setBackgroundImage(createFilteredImage(3), for: .normal)
     }
     
     @IBAction func onFilterClick(_ sender: UIButton) {
@@ -300,23 +311,42 @@ class EditViewController: UIViewController {
         btnFilter4.alpha = alpha
     }
     
-    @IBAction func onFilter1Click(_ sender: UIButton) {
+    @IBAction func onClickBtn1(_ sender: UIButton) {
         ivEmoticon.applyFilter()
     }
     
-    @IBAction func onFilter2Click(_ sender: UIButton) {
+    
+    @IBAction func onClickBtn2(_ sender: UIButton) {
         ivEmoticon.applyFilter2()
     }
     
-    @IBAction func onFilter3Click(_ sender: UIButton) {
+    @IBAction func onClickButton3(_ sender: UIButton) {
         ivEmoticon.applyFilter3()
     }
     
-    @IBAction func onFilter4Click(_ sender: UIButton) {
+    @IBAction func onClickBtn4(_ sender: UIButton) {
         ivEmoticon.applyFilter4()
     }
     
+    var CIFilterNames = [
+        "CIPhotoEffectChrome",
+        "CIPhotoEffectFade",
+        "CIPhotoEffectInstant",
+        "CIPhotoEffectNoir"
+    ]
     
+    func createFilteredImage(_ i: Int) -> UIImage{
+        // Create filters for each button
+        let ciContext = CIContext(options: nil)
+        let coreImage = CIImage(image: self.image!)
+        let filter = CIFilter(name: "\(CIFilterNames[i])" )
+        filter!.setDefaults()
+        filter!.setValue(coreImage, forKey: kCIInputImageKey)
+        let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
+        let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
+        let imageForButton = UIImage(cgImage: filteredImageRef!)
+        return imageForButton
+    }
     
 }
 
