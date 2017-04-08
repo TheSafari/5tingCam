@@ -40,14 +40,14 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
             
             let size = image.size
             if size.width > 600 || size.height > 600{
-            selectedImage = resizeImage(image: selectedImage!, targetSize: CGSize(width: 600, height:
-                600))
+                selectedImage = resizeImage(image: selectedImage!, targetSize: CGSize(width: 600, height:
+                    600))
             }
         } else{
             print("Something went wrong")
@@ -64,7 +64,6 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //let navVc = segue.destination as? UINavigationController
         let editVc = segue.destination as? EditViewController
         if editVc != nil  {
             print("abc")
@@ -72,7 +71,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,  UII
         } else {
             print("nil")
         }
-    
+        
     }
     
     @IBAction func onClickSetting(_ sender: UIButton) {

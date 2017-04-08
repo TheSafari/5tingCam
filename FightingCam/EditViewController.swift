@@ -97,24 +97,6 @@ class EditViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    @IBAction func onBackButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func onDoneButton(_ sender: UIBarButtonItem) {
-        textToSpeech()
-    }
-    
     @IBAction func onBackClick(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -173,7 +155,6 @@ class EditViewController: UIViewController {
         }
     }
     
-    
     func saveImage(){
         let scale: CGFloat = 1
         UIGraphicsBeginImageContextWithOptions(ivEmoticon.layer.frame.size, false, scale)
@@ -190,8 +171,6 @@ class EditViewController: UIViewController {
         if (selectedIndex > -1) {
             bgImage = createFilteredImage(selectedIndex)
         }
-        print("width: \(bgImage?.size.width)")
-        print("height: \(bgImage?.size.height)")
         
         let newSize = CGSize(width: (bgImage?.size.width)!, height: (bgImage?.size.height)!)  // set this to what you need
         
