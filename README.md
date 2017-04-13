@@ -25,10 +25,15 @@ An iOS application. 5ting Cam (5ting means fighting) makes user happier through 
 Our small survey:
 https://docs.google.com/forms/d/1DXbuwIn3W-cpvLzxwnhOKlJi9p7mrEkeaARVkqYY3AE/viewanalytics
 
-### Wireframe Walkthrough
-https://github.com/TheSafari/5tingCam/blob/master/5ting%20Cam%20walkthrough.gif
+## Video Walkthrough
 
+Here's a walkthrough of implemented user stories:
 
+<img src='https://github.com/TheSafari/5tingCam/blob/master/5ting%20Cam%20walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+## Technologies
 Libraries we are using:
 - Microsoft Cognitive Services
 - Realm
