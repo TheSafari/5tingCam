@@ -1,6 +1,5 @@
 ## 5tingCam
-An iOS Swift application. 5ting Cam (5ting means fighting) with a mission to create fun, motivation for people and connect people together  through  funny  pictures.  Besides,  they  also received  a quote  that  make  them more motivation, inspiration for working or studying and adorable sound of animals also be attached. Our target users are anyone who want to find an app to relax, to get energized and motivated when they feel lazy. The app can help them to reduce fatigue and stress after hours of work or study.
-
+An iOS application. 5ting Cam (5ting means fighting) makes user happier through cute sticker on their photo and make their life more meaningful by the quote we gave. And they also easily share it with their friends. Our target users are anyone who want to find an app to relax, to get energized and motivated themselves.
 
 ### Features
 
@@ -27,9 +26,8 @@ Our small survey:
 https://docs.google.com/forms/d/1DXbuwIn3W-cpvLzxwnhOKlJi9p7mrEkeaARVkqYY3AE/viewanalytics
 
 ### Wireframe Walkthrough
+https://github.com/TheSafari/5tingCam/blob/master/5ting%20Cam%20walkthrough.gif
 
-
-You can also try on browsers: https://invis.io/VAAV8ANFU
 
 Libraries we are using:
 - Microsoft Cognitive Services
