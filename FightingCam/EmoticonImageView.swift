@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+@objc protocol EmoticonImageViewDelegate {
+    @objc optional func onBackgroundClick()
+}
+
 class EmoticonImageView: UIView {
     
     /*
@@ -24,6 +28,8 @@ class EmoticonImageView: UIView {
     @IBOutlet weak var ivBackground: UIImageView!
     
     var image: UIImage?
+    
+    weak var delegate: EmoticonImageViewDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -46,6 +52,20 @@ class EmoticonImageView: UIView {
         print(">>>>>> frame width: \(ivBackground.frame.width) -- height \(ivBackground.frame.height)")
         contentView.frame = bounds
         addSubview(contentView)
+        
+        // create tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EmoticonImageView.imageTapped(gesture:)))
+        // add it to the image view;
+        ivBackground.addGestureRecognizer(tapGesture)
+        ivBackground.isUserInteractionEnabled = true
+    }
+    
+    func imageTapped(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            delegate?.onBackgroundClick!()
+            
+        }
     }
     
     func setImage(bgImage: UIImage) {

@@ -26,6 +26,7 @@ class EditViewController: UIViewController {
     var emoticonName: String? = ""
     var soundSetting = true
     var apiResult: [[String: AnyObject]] = []
+    var isSuccess = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +37,24 @@ class EditViewController: UIViewController {
         speaker = Speaker()
         speaker?.setMyDelegate(self)
         
+        ivEmoticon.delegate = self
+        
         //ivEmoticon.image = image
         ivEmoticon.setImage(bgImage: image!)
         
         
         
         let imageData = UIImagePNGRepresentation(image!)
+        detectFace(data: imageData!)
         
+    }
+    
+    func detectFace(data: Data){
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        DataManager.shareInstance.fetchFaceInfoFromUrl(data: imageData!, completion: { (items) -> (Void) in
+        DataManager.shareInstance.fetchFaceInfoFromUrl(data: data, completion: { (items) -> (Void) in
             // Handle after fetch to api success
+            self.isSuccess = true
             self.apiResult = items
             print("Fetch Success Item = : \(items) ")
             if items.count == 0 {
@@ -57,7 +65,7 @@ class EditViewController: UIViewController {
                 let alert = UIAlertController(title: "Face not found", message: "No face detected. Please try another picture!", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-
+                
                 return
             }
             for index in 0..<items.count{
@@ -83,14 +91,14 @@ class EditViewController: UIViewController {
             }
         }, failure: { (errorMessage) in
             print("errorMessage : \(errorMessage)")
-             DispatchQueue.main.async(){
-            MBProgressHUD.hide(for: self.view, animated: true)
+            self.isSuccess = false
+            DispatchQueue.main.async(){
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
             let alert = UIAlertController(title: "Face not found", message: "No face detected. Please try another picture!", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         })
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -240,23 +248,75 @@ class EditViewController: UIViewController {
     @IBOutlet weak var filerMenuView: UIView!
     @IBOutlet weak var darkFillView: UIViewX!
     
-    @IBOutlet weak var btnFilter1: UIButton!
-    @IBOutlet weak var btnFilter2: UIButton!
-    @IBOutlet weak var btnFilter3: UIButton!
-    @IBOutlet weak var btnFilter4: UIButton!
+    @IBOutlet weak var ivFilter1: UIImageView!
+    @IBOutlet weak var ivFilter2: UIImageView!
+    @IBOutlet weak var ivFilter3: UIImageView!
+    @IBOutlet weak var ivFilter4: UIImageView!
+    
+    
     var selectedIndex = -1
 
     
     func initFilterMenu(){
-        btnFilter1.alpha = 0
-        btnFilter2.alpha = 0
-        btnFilter3.alpha = 0
-        btnFilter4.alpha = 0
+        ivFilter1.alpha = 0;
+        ivFilter2.alpha = 0;
+        ivFilter3.alpha = 0;
+        ivFilter4.alpha = 0;
         
-        btnFilter1.setBackgroundImage(createFilteredImage(0), for: .normal)
-        btnFilter2.setBackgroundImage(createFilteredImage(1), for: .normal)
-        btnFilter3.setBackgroundImage(createFilteredImage(2), for: .normal)
-        btnFilter4.setBackgroundImage(createFilteredImage(3), for: .normal)
+        ivFilter1.image = createFilteredImage(0)
+        ivFilter2.image = createFilteredImage(1)
+        ivFilter3.image = createFilteredImage(2)
+        ivFilter4.image = createFilteredImage(3)
+        
+        // add it to the image view;
+        let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(EditViewController.imageTapped1(gesture:)))
+        ivFilter1.addGestureRecognizer(tapGesture1)
+        
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(EditViewController.imageTapped2(gesture:)))
+        ivFilter2.addGestureRecognizer(tapGesture2)
+        
+        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(EditViewController.imageTapped3(gesture:)))
+        ivFilter3.addGestureRecognizer(tapGesture3)
+        
+        let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(EditViewController.imageTapped4(gesture:)))
+        ivFilter4.addGestureRecognizer(tapGesture4)
+        
+    }
+    
+    func imageTapped1(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped 1")
+            ivEmoticon.applyFilter()
+            selectedIndex = 0
+            
+        }
+    }
+    
+    func imageTapped2(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped 2")
+            ivEmoticon.applyFilter2()
+            selectedIndex = 1
+            
+        }
+    }
+    
+    func imageTapped3(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped 3")
+            ivEmoticon.applyFilter3()
+            selectedIndex = 2
+            
+        }
+    }
+    
+    func imageTapped4(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped 4")
+            ivEmoticon.applyFilter4()
+            selectedIndex = 3
+            
+        }
     }
     
     @IBAction func onFilterClick(_ sender: UIButton) {
@@ -283,32 +343,11 @@ class EditViewController: UIViewController {
     }
     
     func toggleFilterButton(){
-        let alpha = CGFloat(btnFilter1.alpha == 0 ? 1 :0)
-        btnFilter1.alpha = alpha
-        btnFilter2.alpha = alpha
-        btnFilter3.alpha = alpha
-        btnFilter4.alpha = alpha
-    }
-    
-    @IBAction func onClickBtn1(_ sender: UIButton) {
-        ivEmoticon.applyFilter()
-        selectedIndex = 0
-    }
-    
-    
-    @IBAction func onClickBtn2(_ sender: UIButton) {
-        ivEmoticon.applyFilter2()
-        selectedIndex = 1
-    }
-    
-    @IBAction func onClickButton3(_ sender: UIButton) {
-        ivEmoticon.applyFilter3()
-        selectedIndex = 2
-    }
-    
-    @IBAction func onClickBtn4(_ sender: UIButton) {
-        ivEmoticon.applyFilter4()
-        selectedIndex = 3
+        let alpha1 = CGFloat(ivFilter1.alpha == 0 ? 1 :0)
+        ivFilter1.alpha = alpha1
+        ivFilter2.alpha = alpha1
+        ivFilter3.alpha = alpha1
+        ivFilter4.alpha = alpha1
     }
     
     var CIFilterNames = [
@@ -343,6 +382,16 @@ extension EditViewController : SpeakerDelegate {
             if !soundSetting {
                 playMusic(fullName: "Audio" + fileNumber! + ".wav")
             }
+        }
+    }
+}
+
+extension EditViewController: EmoticonImageViewDelegate {
+    func onBackgroundClick() {
+        print("processing again")
+        if !isSuccess {
+            let imageData = UIImagePNGRepresentation(image!)
+            detectFace(data: imageData!)
         }
     }
 }
