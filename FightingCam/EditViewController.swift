@@ -204,15 +204,33 @@ class EditViewController: UIViewController {
             let quoteX = currentQuote.x
             let quoteY = currentQuote.y
             
-            let lbl = UILabel(frame: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
-            lbl.textAlignment = .center
-            lbl.text = currentQuote.quote
-            lbl.numberOfLines = 0
-            lbl.textColor = UIColor.white
-            lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
-            let fontSize = 20.0 / ivEmoticon.ratio!
-            lbl.font = UIFont(name: "Yellowtail", size: fontSize)
-            lbl.drawText(in: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
+            let width = (bgImage?.size.width)! * 0.8
+            let data = heightForView(currentQuote.quote!, width)
+            
+//            let lbl = UILabel(frame: CGRect(x: quoteX!, y: quoteY!, width: width, height: height))
+//            lbl.textAlignment = .center
+//            lbl.text = currentQuote.quote
+//            lbl.numberOfLines = 0
+//            lbl.textColor = UIColor.white
+//            lbl.backgroundColor = UIColor.blue
+//            lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
+//            let fontSize = 20.0 / ivEmoticon.ratio!
+//            lbl.font = UIFont(name: "Yellowtail", size: fontSize)
+//            //lbl.drawText(in: CGRect(x: quoteX!, y: quoteY!, width: (bgImage?.size.width)! * 0.8, height: 100))
+//            //lbl.drawText(in: CGRect(x: quoteX!, y: quoteY!, width: width, height: height))
+//            lbl.draw(CGRect(x: quoteX!, y: quoteY!, width: width, height: height))
+            
+            // Setup the font attributes that will be later used to dictate how the text should be drawn
+            let style = NSMutableParagraphStyle()
+            style.alignment = NSTextAlignment.center
+            
+            let textFontAttributes = [
+                NSFontAttributeName: UIFont(name: "Yellowtail", size: 20.0 / ivEmoticon.ratio!)!,
+                NSForegroundColorAttributeName: UIColor.white,
+                NSParagraphStyleAttributeName: style
+                ] as [String : Any]
+            let drawText : NSString = currentQuote.quote! as NSString
+            drawText.draw(in: CGRect(x: quoteX!, y: quoteY!, width: data.width, height: data.height), withAttributes: textFontAttributes)
         }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -220,6 +238,18 @@ class EditViewController: UIViewController {
         self.imageSaved = newImage
         UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil)
         print("save done")
+    }
+    
+    
+    func heightForView(_ text: String,_ width: CGFloat) -> (width: CGFloat, height: CGFloat){
+        let label:UILabel = UILabel(frame: CGRect(x:0, y:0, width:width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = UIFont(name: "Yellowtail", size: 20.0/ivEmoticon.ratio!)
+        label.text = text
+        
+        label.sizeToFit()
+        return (label.frame.width ,label.frame.height)
     }
     
     var bombSoundEffect: AVAudioPlayer!

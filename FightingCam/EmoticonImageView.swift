@@ -71,8 +71,6 @@ class EmoticonImageView: UIView {
     func setImage(bgImage: UIImage) {
         self.image = bgImage
         ivBackground.image = self.image
-        print("frame width: \(contentView.frame.width) -- height \(contentView.frame.height)")
-        print("image width: \(String(describing: ivBackground.image?.size.width)) -- height \(String(describing: ivBackground.image?.size.height))")
         caculate()
     }
     
@@ -83,10 +81,14 @@ class EmoticonImageView: UIView {
     
     func caculate(){
         imageRect = AVMakeRect(aspectRatio: (ivBackground.image?.size)!, insideRect: contentView.frame)
-        ratio = (imageRect?.size.width)! / (ivBackground.image?.size.width)!
+        ratio = (imageRect?.size.width)! / (self.image?.size.width)!
+        print("offset x:  \(String(describing: imageRect?.size.width))")
+        print("offset y: \(String(describing: imageRect?.size.height))")
         
         offsetX = imageRect?.origin.x
         offsetY = imageRect?.origin.y
+        
+        
     }
     
     func addEmoticionFace(face: FaceInfo, imageFace: UIImage){
@@ -131,19 +133,26 @@ class EmoticonImageView: UIView {
         let x = (imageRect?.origin.x)! + (imageRect?.size.width)! * 0.1
         let y = (imageRect?.origin.y)! + (imageRect?.size.height)! * 0.7
         
-        currentQuote = OriginalQuote(quote: quote)
-        currentQuote?.x = x / ratio!
-        currentQuote?.y = y / ratio!
         
-        let label = UILabel(frame: CGRect(x: x, y: y, width: (imageRect?.size.width)! * 0.8, height: 100))
-        label.textAlignment = .center
+        
+        
+        currentQuote = OriginalQuote(quote: quote)
+        currentQuote?.x = (imageRect?.size.width)! * 0.1 / ratio!
+        currentQuote?.y = (imageRect?.size.height)! * 0.7 / ratio!
+        
+        
+        let width = (imageRect?.size.width)! * 0.8;
+        let data = heightForView(quote, width)
+        let label = UILabel(frame: CGRect(x: x, y: y, width: data.width, height: data.height))
         label.text = quote
         label.numberOfLines = 0
         label.textColor = UIColor.white
+        label.textAlignment = .center
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = UIFont(name: "Yellowtail", size: 20.0)
         label.isUserInteractionEnabled = true
         label.tag = 100000
+        
         //add pan gesture for quote
         let pan = UIPanGestureRecognizer(target: self, action: #selector(EmoticonImageView.onQuotePanGesture(_:)))
         label.addGestureRecognizer(pan)
@@ -156,6 +165,17 @@ class EmoticonImageView: UIView {
         }
         
         contentView.addSubview(label)
+    }
+    
+    func heightForView(_ text: String,_ width: CGFloat) -> (width: CGFloat, height: CGFloat){
+        let label:UILabel = UILabel(frame: CGRect(x:0, y:0, width:width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = UIFont(name: "Yellowtail", size: 20.0)
+        label.text = text
+        
+        label.sizeToFit()
+        return (label.frame.width ,label.frame.height)
     }
     
     //==================
@@ -172,9 +192,10 @@ class EmoticonImageView: UIView {
             case .changed:
                 translation = sender.translation(in: contentView)
                 currentView.center = CGPoint(x: (initalFacePoint?.x)! + (translation?.x)!, y: (initalFacePoint?.y)! + (translation?.y)!)
+            case .ended:
+                currentQuote?.x = (currentView.frame.origin.x - offsetX!) / ratio!
+                currentQuote?.y = (currentView.frame.origin.y - offsetY!) / ratio!
             default:
-                currentQuote?.x = currentView.frame.origin.x / ratio!
-                currentQuote?.y = currentView.frame.origin.y / ratio!
                 break;
             }
         }
